@@ -1,0 +1,34 @@
+body{
+    height:100vw;
+}
+.general-content{
+    background-image: url("../img/church-bg.jpg");
+    padding-top:150px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    height:100%;
+}
+.brand-image{
+    height: 100px;
+    margin: 0;
+}
+.home-pic{
+    height:100px;
+}
+.bg-grey{
+    background-color: rgb(235, 235, 235);
+}
+.welcome-statement{
+    font-size: 2.50em;
+    color: white;
+    text-align: center;
+}
+.special-card{
+    background-color: rgba(235, 235, 235, 0.7);
+    /* opacity:0.4; */
+}
+.staff-content{
+    background-image: none;
+    padding-top:150px;
+}
