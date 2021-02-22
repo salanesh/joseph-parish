@@ -21,9 +21,9 @@
     </div>
     
     
-    <!-- <div class="container-fluid my-3 mx-auto" style="width: 20rem">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#addEmployeeModal">Add Employee</button>
-    </div> -->
+    <div class="container-fluid my-3 mx-auto" style="width: 20rem">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#AddEmployeeModal">Add Employee</button>
+    </div>
     
     <div class="container-fluid mx-auto" style="width: 70rem">
         <table class="table table-bordered table-hover">
@@ -36,49 +36,48 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- put back end shit here -->
+                <!-- put display back end shit here -->
             </tbody>
         </table>
     </div>
     </div>
     
-    <!-- Edit Employee Modal -->
+    <!-- Add Employee Modal -->
 
-    <div class="modal fade" id="EditEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="EditEmployeeLabel" aria-hidden="true">
+    <div class="modal fade" id="AddEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="AddEmployeeLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="EditEmployeeLabel">Edit Employee</h5>
+                    <h5 class="modal-title" id="AddEmployeeLabel">Add Employee</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-        
+                    <form action="../controllers/staff-controller.php" method="POST" name="employeeSignupForm" onsubmit="return(staffValidator());">
                         <div class="form-group">
                             <label for="emp-name">Employee Name:</label>
                             <div class="input-group" id="emp-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" required>
+                                <input type="text" class="form-control" placeholder="middle name" required>
+                                <input type="text" class="form-control" placeholder="last name" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="emp-bday-selector">Employee's Birthday:</label>
+                            <label for="emp-bday-selector" required>Employee's Birthday:</label>
                             <input type="date" class="form-control" id="emp-bday-selector">
                         </div>
                         <div class="form-group">
                             <label for="emp-address-input">Employee's Address</label>
-                            <textarea class="form-control" id="emp-address-input" rows="2" id="emp-address-input"></textarea>
+                            <textarea class="form-control" id="emp-address-input" rows="2" id="emp-address-input" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="emp-email-input">Employee's Email Address</label>
-                            <input type="email" class="form-control" placeholder="example@email.com"id="emp-email-input">
+                            <input type="email" class="form-control" placeholder="example@email.com"id="emp-email-input" required>
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" placeholder="" id="emp-password-reset">
-                             <label for="emp-password-reset">Reset Password?</label>
+                        <div class="form-group">
+                            <label for="emp-pass-input">Employee Password</label>
+                            <input type="password" name="passwordInput" id="emp-pass-input">
                         </div>
                         <div class="form-group">
                             <label for="service-selector">Staff Position: </label>
@@ -96,6 +95,8 @@
             </div>
         </div>
     </div>
+
+<script src="../custom-js/staff-functions.js"></script>
 
 </body>
 </html>

@@ -10,7 +10,7 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost/joseph-parish/staff-view/staff-reports.php",
+            "url": "http://localhost/joseph-parish/staff-view/staff-home.php",
             "webRoot": "${workspaceFolder}"
         }
     ]
