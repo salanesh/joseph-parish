@@ -7,6 +7,15 @@
     <title>Staff Controller</title>
 </head>   
 <body>
-    <h1>You passed some data</h1>
+    <?php
+    $roleSelected = $_POST["rolekey"];
+    $empFname = $_POST["fname"];
+    $empLname = $_POST["lname"];
+    $empMname = $_POST["mname"];
+    var_dump($empFname);
+    var_dump($empMname);
+    var_dump($empLname);
+    var_dump($roleSelected);
+    ?>
 </body>
 </html>

@@ -6,6 +6,7 @@
     <title>Manage Employees</title>
     <?php
     include("../shared-html/header-links-loggedin.html");
+    require("../custom-php/connector.php");
     ?>
 </head>
 <body>
@@ -25,7 +26,7 @@
         <button class="btn btn-primary" data-toggle="modal" data-target="#AddEmployeeModal">Add Employee</button>
     </div>
     
-    <div class="container-fluid mx-auto" style="width: 70rem">
+    <div class="container-fluid mx-auto" style="width: 70rem">                     
         <table class="table table-bordered table-hover">
             <thead class="bg-grey">
                 <tr>
@@ -58,9 +59,9 @@
                         <div class="form-group">
                             <label for="emp-name">Employee Name:</label>
                             <div class="input-group" id="emp-name">
-                                <input type="text" class="form-control" placeholder="first name" required>
-                                <input type="text" class="form-control" placeholder="middle name" required>
-                                <input type="text" class="form-control" placeholder="last name" required>
+                                <input type="text" class="form-control" placeholder="first name" required name="fname">
+                                <input type="text" class="form-control" placeholder="middle name" required name="mname">
+                                <input type="text" class="form-control" placeholder="last name" required name="lname">
                             </div>
                         </div>
                         <div class="form-group">
@@ -74,17 +75,21 @@
                         <div class="form-group">
                             <label for="emp-email-input">Employee's Email Address</label>
                             <input type="email" class="form-control" placeholder="example@email.com"id="emp-email-input" required>
-                        </div>
+                        </div>   
                         <div class="form-group">
                             <label for="emp-pass-input">Employee Password</label>
                             <input type="password" name="passwordInput" id="emp-pass-input">
                         </div>
                         <div class="form-group">
                             <label for="service-selector">Staff Position: </label>
-                            <select class="form-control" id="service-selector">
-                                <option>Position 1</option>
-                                <option>Position 2</option>
-                                <option>Position 3</option>
+                            <select class="form-control" id="service-selector" name="rolekey">
+                            <?php
+                                $sql="SELECT * FROM roles";
+                                $results=mysqli_query($connection,$sql); 
+                                while($row = mysqli_fetch_assoc($results)) {
+                                    echo "<option value='$row[roleID]'>".$row["roleName"]."</option>";
+                                }
+                            ?>
                             </select>
                         </div>
                         <div class="container text-center">

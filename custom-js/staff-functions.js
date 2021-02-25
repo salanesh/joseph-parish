@@ -5,4 +5,3 @@ function staffValidator(){
         return false;
     }
 }
-alert("testing");
