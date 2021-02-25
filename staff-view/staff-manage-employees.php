@@ -66,19 +66,19 @@
                         </div>
                         <div class="form-group">
                             <label for="emp-bday-selector" required>Employee's Birthday:</label>
-                            <input type="date" class="form-control" id="emp-bday-selector">
+                            <input type="date" class="form-control" id="emp-bday-selector" name="empbday">
                         </div>
                         <div class="form-group">
                             <label for="emp-address-input">Employee's Address</label>
-                            <textarea class="form-control" id="emp-address-input" rows="2" id="emp-address-input" required></textarea>
+                            <textarea class="form-control" id="emp-address-input" rows="2" id="emp-address-input" name ="empaddress"required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="emp-email-input">Employee's Email Address</label>
-                            <input type="email" class="form-control" placeholder="example@email.com"id="emp-email-input" required>
+                            <input type="email" class="form-control" placeholder="example@email.com"id="emp-email-input" name="empemail" required>
                         </div>   
                         <div class="form-group">
                             <label for="emp-pass-input">Employee Password</label>
-                            <input type="password" name="passwordInput" id="emp-pass-input">
+                            <input type="password" id="emp-pass-input" name="emppassword">
                         </div>
                         <div class="form-group">
                             <label for="service-selector">Staff Position: </label>

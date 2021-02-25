@@ -29,7 +29,7 @@ CREATE TABLE Users(
     fName varchar(20),
     lName varchar(20),
     mName varchar(20),
-    age int,
+    userBday date,
     userAddress varchar(50),
     email varchar(30),
     userName varchar(20),
