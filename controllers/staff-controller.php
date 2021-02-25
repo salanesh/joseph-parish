@@ -17,6 +17,7 @@
     $empAddress = $_POST["empaddress"];
     $empEmail = $_POST["empemail"];
     $empPassword = $_POST["emppassword"];
+    $empStatus = 1;
 
     //use var_dump to check if the variables are holding the right data
     // var_dump($empFname);
@@ -35,9 +36,10 @@
     // echo("<br>");
     // var_dump($empPassword);
 
-    $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,age,userAddress,email,userPass,userStatus) values()");
-    $statement->bind_param("isssssss",);
+    $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday) values(?,?,?,?,?,?,?,?,?)");
+    $statement->bind_param("issssssis",$roleSelected,$empFname,$empLname,$empMname,$empAddress,$empEmail,$empPassword,$empStatus,$empBday);
     $statement->execute();
+    echo('the shit has been added');
     //header("../staff-view/staff-manage-employees.php");
     ?>
 </body>
