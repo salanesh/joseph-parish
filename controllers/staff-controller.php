@@ -39,8 +39,12 @@
     $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday) values(?,?,?,?,?,?,?,?,?)");
     $statement->bind_param("issssssis",$roleSelected,$empFname,$empLname,$empMname,$empAddress,$empEmail,$empPassword,$empStatus,$empBday);
     $statement->execute();
-    echo('the shit has been added');
-    //header("../staff-view/staff-manage-employees.php");
+    // echo('the shit has been added');
+    
+    $statement->close();
+    $connection->close();
+
+    header("../staff-view/staff-manage-employees.php");
     ?>
 </body>
 </html>
