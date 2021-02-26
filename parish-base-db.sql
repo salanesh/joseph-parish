@@ -51,6 +51,15 @@ CREATE TABLE Donations(
     FOREIGN KEY(catID) references Categories(catID),
     FOREIGN KEY(eventID) references Events(eventID)
 );
+CREATE TABLE Church_Services(
+    serviceID int AUTO_INCREMENT,
+    serviceName varchar(30),
+    serviceDesc text,
+    servicePrice decimal,
+    servicePic varchar(50),
+    serviceReqs text,
+    PRIMARY KEY(serviceID)
+);
 CREATE TABLE Reservations(
     reservationID int AUTO_INCREMENT,
     userID int,
@@ -61,15 +70,6 @@ CREATE TABLE Reservations(
     PRIMARY KEY(reservationID),
     FOREIGN KEY(userID) references Users(userID),
     FOREIGN KEY(serviceID) references Church_Services(serviceID)
-);
-CREATE TABLE Church_Services(
-    serviceID int AUTO_INCREMENT,
-    serviceName varchar(30),
-    serviceDesc text,
-    servicePrice decimal,
-    servicePic varchar(50),
-    serviceReqs text,
-    PRIMARY KEY(serviceID)
 );
 CREATE TABLE Marriage(
     serviceID int,
