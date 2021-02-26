@@ -54,37 +54,41 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="../controllers/staff-events-controller.php" method="POST">
         
                         <div class="form-group">
                             <label for="event-name">Event Name:</label>
-                            <input type="text" class="form-control" placeholder="event name" id="event-name">    
+                            <input type="text" class="form-control" placeholder="event name" id="event-name" name="eventname">    
                         </div>
                         <div class="form-group">
                             <label for="event-start-selector">Event Start:</label>
                             <div class ="input-group"id="event-start-selector">
-                            	 <input type="date" class="form-control">
-                            	 <input type="time" class="form-control">
+                            	 <input type="date" class="form-control" name="eventStartDate">
+                            	 <input type="time" class="form-control" name="eventStartTime">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="event-end-selector">Event End:</label>
                             <div class ="input-group"id="event-end-selector">
-                            	 <input type="date" class="form-control">
-                            	 <input type="time" class="form-control">
+                            	 <input type="date" class="form-control" name="eventEndDate">
+                            	 <input type="time" class="form-control" name="eventEndTime">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="event-desc-input">Event Description</label>
-                            <textarea class="form-control" id="event-desc-input" rows="2"></textarea>
+                            <textarea class="form-control" id="event-desc-input" rows="2" name="eventDesc"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="event-pic-input">Event Picture</label>
-                            <input type="file" class="form-control" placeholder="picture"id="event-pic-input">
+                            <input type="file" class="form-control" placeholder="picture"id="event-pic-input" name="eventImage">
                         </div>
                        <div class="form-group">
                             <label for="event-donation-goal">Donation Goal</label>
-                            <input type="number" class="form-control" placeholder="0"id="event-donation-goal">
+                            <input type="number" class="form-control" placeholder="0"id="event-donation-goal" name="donationGoal">
+                        </div>
+                        <div class="form-group">
+                            <label for="event-status">Event Status</label>
+                            <input type="checkbox" name="eventStatus" id="event-status" value="1">
                         </div>
                     
                         <div class="container text-center">
