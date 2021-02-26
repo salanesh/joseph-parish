@@ -30,8 +30,8 @@
                 <thead class="bg-grey">
                     <tr>
                         <th scope="col">Parishioner Name</th>
-                        <th scope="col">Contact Number</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Parishioner ID</th>
+                        <th scope="col">Username</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -52,35 +52,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="../controllers/parishioners-controller.php" method="POST" name="parishionersSignupForm">
         
                         <div class="form-group">
                             <label for="parishioner-name">Parishioner Name:</label>
                             <div class="input-group" id="parishioner-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" name="parishionersfname">
+                                <input type="text" class="form-control" placeholder="middle name" name="parishionersmname">
+                                <input type="text" class="form-control" placeholder="last name" name ="parishionerslname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="parishioner-bday-selector">Parishioner's Birthday:</label>
-                            <input type="date" class="form-control" id="parishioner-bday-selector">
+                            <input type="date" class="form-control" id="parishioner-bday-selector" name="parishionersbday">
                         </div>
                         <div class="form-group">
                             <label for="parishioner-address-input">Parishioner's Address</label>
-                            <textarea class="form-control" id="parishioner-address-input" rows="2" id="parishioner-address-input"></textarea>
+                            <textarea class="form-control" id="parishioner-address-input" rows="2" id="parishioner-address-input" name ="parishionersaddress"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="parishioner-contact-input">Parishioner's Contact Number</label>
-                            <input type="number" class="form-control" placeholder="00000000000"id="parishioner-contact-input">
+                            <input type="number" class="form-control" placeholder="00000000000"id="parishioner-contact-input" name="parishionerscontact">
                         </div>
                         <div class="form-group">
                             <label for="parishioner-email-input">Parishioner's Email Address</label>
-                            <input type="email" class="form-control" placeholder="example@email.com"id="parishioner-email-input">
+                            <input type="email" class="form-control" placeholder="example@email.com"id="parishioner-email-input" name ="parishionersemail">
                         </div>
                         <div class="form-group">
                         	<label for="parishioner-password-reset">Password</label>
-                            <input type="password" class="form-ccontrol" placeholder="" id="parishioner-password-reset">
+                            <input type="password" class="form-ccontrol" placeholder="" id="parishioner-password-reset" name="parishionerspasswordgi">
                         </div>
                         <div class="container text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -102,7 +102,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form> 
         
                         <div class="form-group">
                             <label for="parishioner-name">Parishioner Name:</label>

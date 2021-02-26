@@ -17,7 +17,7 @@
         <div class="card mx-auto my-5 special-card" style="width: 30rem">
             <div class="card-body">
                 <h2 class="text-center">Login</h2>
-                <form>
+                <form action="../controllers/login-controller.php" method="POST">
                     <div class="form-group">
                         <label for="login-email-input">Email address</label>
                         <div class="input-group" id="login-email-input">

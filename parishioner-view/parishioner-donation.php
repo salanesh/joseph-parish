@@ -20,7 +20,7 @@
             </form>
         </div> 
       
-      <div class="container mx-auto my-5" style="width: 120rem; background-color:blue" >
+      <div class="container mx-auto my-5" style="width: 120rem; background-color: grey; padding: 50px" >
       <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
