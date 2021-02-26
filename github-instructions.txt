@@ -1,0 +1,22 @@
+#####WHEN UPLOADING A CHANGED FILE OR NEW FILES#####
+
+STEP 1
+git add .
+
+step2 
+git commit -m "added github instructs"
+
+step 3
+git push origin wyn
+
+step4 
+add ur credentials when prompted
+
+step 5
+after uploading changes to branch, make a pull request
+
+######WHEN DOWNLOADING CHANGED FILES#######
+
+step1 
+git pull https://github.com/salanesh/joseph-parish.git
+
