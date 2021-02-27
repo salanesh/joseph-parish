@@ -44,7 +44,7 @@
     $statement->close();
     $connection->close();
 
-    header("../staff-view/staff-manage-employees.php");
+    header("Location: ../staff-view/staff-manage-employees.php");
     ?>
 </body>
 </html>

@@ -38,6 +38,26 @@
             </thead>
             <tbody>
                 <!-- put display back end shit here -->
+                <?php
+                    $sql="SELECT * FROM users where roleID != 1";
+                    $shit=mysqli_query($connection,$sql); 
+                    while($row = mysqli_fetch_assoc($shit)) {
+                       echo "<th>";
+                       echo $row['userID'];
+                       echo "</th>";
+                       echo "<td>";
+                       echo $row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['roleID'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo "<button class='btn btn-secondary'>Edit</button>";
+                       echo "&nbsp";
+                       echo "<button class='btn btn-danger'>Delete</button>";
+                       echo "</td>";
+                    }
+                ?>
             </tbody>
         </table>
     </div>
@@ -102,6 +122,8 @@
     </div>
 
 <script src="../custom-js/staff-functions.js"></script>
+<?php
 
+?>
 </body>
 </html>
