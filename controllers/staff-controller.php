@@ -8,16 +8,10 @@
 </head>   
 <body>
     <?php
-    require("../custom-php/connector.php");
-    $roleSelected = $_POST["rolekey"];
-    $empFname = $_POST["fname"];
-    $empLname = $_POST["lname"];
-    $empMname = $_POST["mname"];
-    $empBday = $_POST["empbday"];
-    $empAddress = $_POST["empaddress"];
-    $empEmail = $_POST["empemail"];
-    $empPassword = $_POST["emppassword"];
-    $empStatus = 1;
+
+    if(isset($_POST["addEmployee"])){
+        addEmployee();
+    }
 
     //use var_dump to check if the variables are holding the right data
     // var_dump($empFname);
@@ -36,13 +30,41 @@
     // echo("<br>");
     // var_dump($empPassword);
 
-    $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday) values(?,?,?,?,?,?,?,?,?)");
-    $statement->bind_param("issssssis",$roleSelected,$empFname,$empLname,$empMname,$empAddress,$empEmail,$empPassword,$empStatus,$empBday);
-    $statement->execute();
-    // echo('the shit has been added');
+    function addEmployee(){
+        require("../custom-php/connector.php");
+        $roleSelected = $_POST["rolekey"];
+        $empFname = $_POST["fname"];
+        $empLname = $_POST["lname"];
+        $empMname = $_POST["mname"];
+        $empBday = $_POST["empbday"];
+        $empAddress = $_POST["empaddress"];
+        $empEmail = $_POST["empemail"];
+        $empPassword = $_POST["emppassword"];
+        $empStatus = 1;
+
+        //statements now//
+        $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday) values(?,?,?,?,?,?,?,?,?)");
+        $statement->bind_param("issssssis",$roleSelected,$empFname,$empLname,$empMname,$empAddress,$empEmail,$empPassword,$empStatus,$empBday);
+        $statement->execute();
+        // echo('the shit has been added');
+        $statement->close();
+        $connection->close();
+    }
+
+    function editEmployee(){
+        require("../custom-php/connector.php");
+        
+        $statement->close();
+        $connection->close();
+    }
+
+    function deactivateEmployee(){
+        require("../custom-php/connector.php");
+
+        $statement->close();
+        $connection->close();
+    }
     
-    $statement->close();
-    $connection->close();
 
     header("Location: ../staff-view/staff-manage-employees.php");
     ?>
