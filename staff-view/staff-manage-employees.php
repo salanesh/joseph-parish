@@ -37,9 +37,9 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- put display back end shit here -->
+                  
                 <?php
-                    $sql="SELECT * FROM users where roleID != 1";
+                    $sql="SELECT u.userID, u.fName, u.mName, u.lName, r.roleName from users u,roles r where u.roleID=r.roleID and u.roleID!=1";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<th>";
@@ -49,7 +49,7 @@
                        echo $row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName'];
                        echo "</td>";
                        echo "<td>";
-                       echo $row['roleID'];
+                       echo $row['roleName'];
                        echo "</td>";
                        echo "<td>";
                        echo "<button class='btn btn-secondary'>Edit</button>";
