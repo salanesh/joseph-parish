@@ -12,6 +12,12 @@
     if(isset($_POST["addEmployee"])){
         addEmployee();
     }
+    if(isset($_POST["editEmployee"])){
+        editEmployee();
+    }
+    if(isset($_GET["deactID"])){
+        deactivateEmployee();
+    }
 
     //use var_dump to check if the variables are holding the right data
     // var_dump($empFname);
@@ -49,24 +55,40 @@
         // echo('the shit has been added');
         $statement->close();
         $connection->close();
+        $succText="Successfully Added the employee";
     }
 
     function editEmployee(){
         require("../custom-php/connector.php");
-        
-        $statement->close();
+        $roleSelected = $_POST["rolekey"];
+        $empFname = $_POST["fname"];
+        $empLname = $_POST["lname"];
+        $empMname = $_POST["mname"];
+        $empBday = $_POST["empbday"];
+        $empAddress = $_POST["empaddress"];
+        $empEmail = $_POST["empemail"];
+        $empPassword = $_POST["emppassword"];
+
+        $stmt = $connection->prepare("");
+        $stmt->bind_param("",);
+        $stmt->execute();
+        $stmt->close();
         $connection->close();
+        $succText="Successfully updated the employee data";
     }
 
     function deactivateEmployee(){
         require("../custom-php/connector.php");
-
-        $statement->close();
+        $stmt = $connection->prepare("UPDATE users set userStatus=0 where userID=?");
+        $stmt->bind_param("i",$_GET["deactID"]);
+        $stmt->execute();
+        $stmt->close();
         $connection->close();
+        $succText="Successfully deactivated the employee";
     }
     
 
-    header("Location: ../staff-view/staff-manage-employees.php");
+    header("Location: ../staff-view/staff-manage-employees.php?success=".$succText);
     ?>
 </body>
 </html>
