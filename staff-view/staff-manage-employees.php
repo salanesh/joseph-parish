@@ -47,7 +47,7 @@
             <tbody>
                   
                 <?php
-                    $sql="SELECT u.userID, u.fName, u.mName, u.lName, r.roleName from users u,roles r where u.roleID=r.roleID and u.roleID!=1";
+                    $sql="SELECT u.userID, u.fName, u.mName, u.lName, r.roleName from users u,roles r where u.roleID=r.roleID and u.roleID!=1 and u.userStatus = 1";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
@@ -142,26 +142,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../controllers/staff-controller.php" method="POST" name="employeeSignupForm" onsubmit="return(staffValidator());">
+                    <form action="../controllers/staff-controller.php" method="POST" name="employeeSignupForm">
                         <div class="form-group">
                             <label for="emp-name">Employee Name:</label>
                             <div class="input-group" id="emp-name">
-                                <input type="text" class="form-control" placeholder="first name" required name="fname">
-                                <input type="text" class="form-control" placeholder="middle name" required name="mname">
-                                <input type="text" class="form-control" placeholder="last name" required name="lname">
+                                <input type="text" class="form-control" placeholder="first name"  name="fname">
+                                <input type="text" class="form-control" placeholder="middle name"  name="mname">
+                                <input type="text" class="form-control" placeholder="last name"  name="lname">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="emp-bday-selector" required>Employee's Birthday:</label>
+                            <label for="emp-bday-selector" >Employee's Birthday:</label>
                             <input type="date" class="form-control" id="emp-bday-selector" name="empbday">
                         </div>
                         <div class="form-group">
                             <label for="emp-address-input">Employee's Address</label>
-                            <textarea class="form-control" id="emp-address-input" rows="2" id="emp-address-input" name ="empaddress"required></textarea>
+                            <textarea class="form-control" id="emp-address-input" rows="2" id="emp-address-input" name ="empaddress"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="emp-email-input">Employee's Email Address</label>
-                            <input type="email" class="form-control" placeholder="example@email.com"id="emp-email-input" name="empemail" required>
+                            <input type="email" class="form-control" placeholder="example@email.com"id="emp-email-input" name="empemail" >
                         </div>   
                         <div class="form-group">
                             <label for="emp-pass-input">Employee Password</label>
@@ -180,7 +180,7 @@
                             </select>
                         </div>
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary" name="addEmployee">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="editEmployee">Submit</button>
                          </div>
                     </form>
                 </div>
