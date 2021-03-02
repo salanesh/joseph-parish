@@ -62,55 +62,68 @@
         //  var_dump($_POST["empemail"]);
         //  echo("<br>");
         //  var_dump($_POST["emppassword"]);
-        
+         $param1="";
          $sqlSelector = "UPDATE users set";
          if(!empty($_POST["rolekey"])){
              $sqlSelector .=" roleID=?,";
              $param1 .="i";
+             $param2[] = $_POST["rolekey"];
          }
          if(!empty($_POST["fname"])){
              $sqlSelector .=" fName=?,";
              $param1 .="s";
+             $param2[] = $_POST["fname"];
          }
          if(!empty($_POST["lname"])){
              $sqlSelector .=" lName=?,";
              $param1 .="s";
+             $param2[] = $_POST["lname"];
          }
          if(!empty($_POST["mname"])){
              $sqlSelector .=" mName=?,";
              $param1 .="s";
+             $param2[] = $_POST["mname"];
          }
          if(!empty($_POST["empbday"])){
              $sqlSelector .=" fName=userBday,";
              $param1 .="i";
+             $param2[] = $_POST["empbday"];
          }
          if(!empty($_POST["empaddress"])){
              $sqlSelector .=" userAddress=?,";
              $param1 .="s";
+             $param2[] = $_POST["empaddress"];
          }
          if(!empty($_POST["empemail"])){
              $sqlSelector .=" email=?,";
              $param1 .="s";
+             $param2[] = $_POST["empemail"];
          }
          if(!empty($_POST["emppassword"])){
              $sqlSelector .=" userPass=?,";
              $param1 .="s";
+             $param2[] = $_POST["emppassword"];
          }
+         if(!empty($_POST["editID"])){
+            $param1 .="i";
+            $param2[] = $_POST["editID"];
+        }
          $sqlSelector=substr_replace($sqlSelector,"",-1);
          $sqlSelector.=" where userID=?";
-         echo "<h1>";
-         echo $sqlSelector;
-         echo "</h1>";
-         echo "<br>";
-         echo "<h1>";
-         echo $param1;
-         echo "</h1>";
-        // $stmt = $connection->prepare("");
-        // $stmt->bind_param("",);
-        // $stmt->execute();
-        // $stmt->close();
-        // $connection->close();
-        // $succText="Successfully updated the employee data";
+        //  echo "<h1>";
+        //  echo $sqlSelector;
+        //  echo "</h1>";
+        //  echo "<br>";
+        var_dump($param1);
+        echo "<br>";
+        var_dump($param2);
+
+        //  $stmt = $connection->prepare($sqlSelector);
+        //  $stmt->bind_param($param1,...$param2);
+        //  $stmt->execute();
+        //  $stmt->close();
+        //  $connection->close();
+        //  $succText="Successfully updated the employee data";
     }
 
     function deactivateEmployee(){
