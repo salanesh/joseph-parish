@@ -108,22 +108,24 @@
             $param1 .="i";
             $param2[] = $_POST["editID"];
         }
+         $param1 .="i";
+         $param2[]=$_POST["passedID"];
          $sqlSelector=substr_replace($sqlSelector,"",-1);
          $sqlSelector.=" where userID=?";
         //  echo "<h1>";
         //  echo $sqlSelector;
         //  echo "</h1>";
         //  echo "<br>";
-        var_dump($param1);
-        echo "<br>";
-        var_dump($param2);
+        // var_dump($param1);
+        // echo "<br>";
+        // var_dump($param2);
 
-        //  $stmt = $connection->prepare($sqlSelector);
-        //  $stmt->bind_param($param1,...$param2);
-        //  $stmt->execute();
-        //  $stmt->close();
-        //  $connection->close();
-        //  $succText="Successfully updated the employee data";
+          $stmt = $connection->prepare($sqlSelector);
+          $stmt->bind_param($param1,...$param2);
+          $stmt->execute();
+          $stmt->close();
+          $connection->close();
+          $succText="Successfully updated the employee data";
     }
 
     function deactivateEmployee(){
@@ -137,7 +139,7 @@
     }
     
 
-    //header("Location: ../staff-view/staff-manage-employees.php?success=".$succText);
+    header("Location: ../staff-view/staff-manage-employees.php?success=".$succText);
     ?>
 </body>
 </html>

@@ -10,6 +10,13 @@
     ?>
 </head>
 <body>
+<script src="../custom-js/staff-functions.js"></script>
+<script>alert("testing this inside");
+        $(document).on("click", ".open-editUser", function () {
+        var userId = $(this).data('id');
+        document.getElementById("passedID").value=userId;
+  });
+</script>
     <?php
     require("../shared-html/staffnav.html");
     ?>
@@ -61,7 +68,7 @@
                        echo $row['roleName'];
                        echo "</td>";
                        echo "<td>";
-                       echo "<button class='btn btn-secondary' data-toggle='modal' data-target='#editEmployeeModal'>Edit</button>";
+                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editEmployeeModal'>Edit</button>";
                        echo "&nbsp";
                        echo "<a href='../controllers/staff-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
                        echo "</td>";
@@ -144,6 +151,12 @@
                 <div class="modal-body">
                     <form action="../controllers/staff-controller.php" method="POST" name="employeeSignupForm">
                         <div class="form-group">
+                                <h1 id="tester">nothing got passed</h1>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="passedID" id="passedID">
+                        </div>
+                        <div class="form-group">
                             <label for="emp-name">Employee Name:</label>
                             <div class="input-group" id="emp-name">
                                 <input type="text" class="form-control" placeholder="first name"  name="fname">
@@ -187,9 +200,5 @@
             </div>
         </div>
     </div>
-<script src="../custom-js/staff-functions.js"></script>
-<?php
-
-?>
 </body>
 </html>
