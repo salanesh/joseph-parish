@@ -1,4 +1,4 @@
-alert("testing inside");
+alert("testing outside file");
 
 
 function staffValidator(){

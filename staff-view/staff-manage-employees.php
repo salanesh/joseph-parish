@@ -11,11 +11,11 @@
 </head>
 <body>
 <script src="../custom-js/staff-functions.js"></script>
-<script>alert("testing this inside");
+<script>
         $(document).on("click", ".open-editUser", function () {
         var userId = $(this).data('id');
         document.getElementById("passedID").value=userId;
-  });
+        });
 </script>
     <?php
     require("../shared-html/staffnav.html");
