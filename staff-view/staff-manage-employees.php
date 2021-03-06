@@ -64,7 +64,7 @@
                        echo "<td>";
                        echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editEmployeeModal'>Edit</button>";
                        echo "&nbsp";
-                       echo "<a href='../controllers/staff-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
+                       echo "<a href='../controllers/staff-management-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
                        echo "</td>";
                        echo "</tr>";
                     }
@@ -86,7 +86,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../controllers/staff-controller.php" method="POST" name="employeeSignupForm" onsubmit="return(staffValidator());">
+                    <form action="../controllers/staff-management-controller.php" method="POST" name="employeeSignupForm" onsubmit="return(staffValidator());">
                         <div class="form-group">
                             <label for="emp-name">Employee Name:</label>
                             <div class="input-group" id="emp-name">
@@ -143,7 +143,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../controllers/staff-controller.php" method="POST" name="employeeUpdateForm">
+                    <form action="../controllers/staff-management-controller.php" method="POST" name="employeeUpdateForm">
                         <div class="form-group">
                             <input type="hidden" name="passedID" id="passedID">
                         </div>
