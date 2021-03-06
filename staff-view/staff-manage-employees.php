@@ -11,12 +11,6 @@
 </head>
 <body>
 <script src="../custom-js/staff-functions.js"></script>
-<script>
-        $(document).on("click", ".open-editUser", function () {
-        var userId = $(this).data('id');
-        document.getElementById("passedID").value=userId;
-        });
-</script>
     <?php
     require("../shared-html/staffnav.html");
     ?>
@@ -149,10 +143,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../controllers/staff-controller.php" method="POST" name="employeeSignupForm">
-                        <div class="form-group">
-                                <h1 id="tester">nothing got passed</h1>
-                        </div>
+                    <form action="../controllers/staff-controller.php" method="POST" name="employeeUpdateForm">
                         <div class="form-group">
                             <input type="hidden" name="passedID" id="passedID">
                         </div>
