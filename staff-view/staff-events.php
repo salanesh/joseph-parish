@@ -130,7 +130,7 @@
         </div>
     </div>
 
-    <!-- Edit Event Modal -->
+    <!-- Edit Event Modal  (Needs to show current values when editing in form)-->
     <div class="modal fade" id="editEventModal" tabindex="-1" role="dialog" aria-labelledby="editEventLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

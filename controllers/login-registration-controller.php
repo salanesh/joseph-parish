@@ -40,12 +40,12 @@
     $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday) values(?,?,?,?,?,?,?,?,?)");
     $statement->bind_param("issssssis",$roleSelected,$parishionersFname,$parishionersLname,$parishionersMname,$parishionersAddress,$parishionersEmail,$parishionersPassword,$parishionersStatus,$parishionersBday);
     $statement->execute();
-    echo('the shit has been added');
+    //echo('the shit has been added');
     
     $statement->close();
     $connection->close();
 
-    //header( "Location: ../staff-view/staff-manage-parishioners.php" );
+    header( "Location: ../loginpage.php" );
 
 
     ?>
