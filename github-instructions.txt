@@ -18,5 +18,5 @@ after uploading changes to branch, make a pull request
 ######WHEN DOWNLOADING CHANGED FILES#######
 
 step1 
-git pull https://github.com/salanesh/joseph-parish.git
+git pull origin main
 
