@@ -41,14 +41,18 @@
                 <tr>
                     <th scope="col">Parishioner ID</th>
                     <th scope="col">Parishioner Name</th>
-                    <th scope="col">Job</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                  
-                <?php
-                    $sql="SELECT u.userID, u.fName, u.mName, u.lName, r.roleName from users u,roles r where u.roleID=r.roleID and u.roleID!=1 and u.userStatus = 1";
+            <?php
+                    require("../custom-php/connector.php");
+                    $sql="SELECT * from users where userStatus !=0";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
@@ -59,10 +63,22 @@
                        echo $row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName'];
                        echo "</td>";
                        echo "<td>";
-                       echo $row['roleName'];
+                       echo $row['userBday'];
                        echo "</td>";
                        echo "<td>";
-                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editParishionerModal'>Edit</button>";
+                       echo $row['userAddress'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['email'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['userPass'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['userStatus'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editParishionersModal'>Edit</button>";
                        echo "&nbsp";
                        echo "<a href='../controllers/parishioners-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
                        echo "</td>";
@@ -121,14 +137,13 @@
             </div>
         </div>
     </div>
-
-
+    </div>
     <!-- edit employees modal -->
-    <div class="modal fade" id="EditParishionersModal" tabindex="-1" role="dialog" aria-labelledby="EditParishionersLabel" aria-hidden="true">
+    <div class="modal fade" id="editParishionersModal" tabindex="-1" role="dialog" aria-labelledby="editParishionersLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="EditParishionersLabel">Edit Parishioner</h5>
+                    <h5 class="modal-title" id="editParishionersLabel">Edit Parishioner</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -179,6 +194,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
