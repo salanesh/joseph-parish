@@ -85,7 +85,7 @@
              $param2[] = $_POST["mname"];
          }
          if(!empty($_POST["empbday"])){
-             $sqlSelector .=" fName=userBday,";
+             $sqlSelector .=" userBday=?,";
              $param1 .="i";
              $param2[] = $_POST["empbday"];
          }
