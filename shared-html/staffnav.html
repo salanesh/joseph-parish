@@ -5,8 +5,14 @@
             <li class='nav-item active'>
                 <a class='nav-link' href='staff-reservation.php'>Reservations</a>
             </li>
-            <li class='nav-item active'>
-                <a class='nav-link' href='staff-manage-employees.php'>Staff</a>
+            <li class='nav-item dropdown'>
+                <a class="nav-link dropdown-toggle" href="#" id="staffDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Employee Management
+                </a>
+                <div class="dropdown-menu" aria-labelledby="staffDropdown">
+                <a class='dropdown-item' href='staff-manage-employees.php'>Staff</a>
+                <a class='dropdown-item' href="staff-manage-roles.php">Roles</a>
+                </div>
             </li>
             <li class='nav-item active'>
                 <a class='nav-link' href='staff-donations.php'>Donations</a>

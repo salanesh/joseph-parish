@@ -44,24 +44,6 @@
 
     function editEmployee(){
         require("../custom-php/connector.php");
-
-
-        //use var_dump to check if the variables are holding the right data
-        //  echo("<br>");
-        //  var_dump($_POST["rolekey"]);
-        //  var_dump($_POST["fname"]);
-        //  echo("<br>");
-        //  var_dump($_POST["lname"]);
-        //  echo("<br>");
-        //  var_dump($_POST["mname"]);
-        //  echo("<br>");
-        //  var_dump($_POST["empbday"]);
-        //  echo("<br>");
-        //  var_dump($_POST["empaddress"]);
-        //  echo("<br>");
-        //  var_dump($_POST["empemail"]);
-        //  echo("<br>");
-        //  var_dump($_POST["emppassword"]);
          $param1="";
          $sqlSelector = "UPDATE users set";
          if(!empty($_POST["rolekey"])){
@@ -85,7 +67,7 @@
              $param2[] = $_POST["mname"];
          }
          if(!empty($_POST["empbday"])){
-             $sqlSelector .=" userBday=?,";g
+             $sqlSelector .=" userBday=?,";
              $param1 .="i";
              $param2[] = $_POST["empbday"];
          }
@@ -112,13 +94,6 @@
          $param2[]=$_POST["passedID"];
          $sqlSelector=substr_replace($sqlSelector,"",-1);
          $sqlSelector.=" where userID=?";
-        //  echo "<h1>";
-        //  echo $sqlSelector;
-        //  echo "</h1>";
-        //  echo "<br>";
-        // var_dump($param1);
-        // echo "<br>";
-        // var_dump($param2);
 
           $stmt = $connection->prepare($sqlSelector);
           $stmt->bind_param($param1,...$param2);
