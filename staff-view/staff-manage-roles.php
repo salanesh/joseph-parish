@@ -33,7 +33,7 @@
             <tbody>
                   
                 <?php
-                    $sql="SELECT * from roles";
+                    $sql="SELECT * from roles where roleID !=1";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
@@ -47,9 +47,9 @@
                        echo $row['roleDesc'];
                        echo "</td>";
                        echo "<td>";
-                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['roleID']." data-target='#editEmployeeModal'>Edit</button>";
+                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['roleID']." data-target='#editRoleModal'>Edit</button>";
                        echo "&nbsp";
-                       echo "<a href='../controllers/staff-management-controller.php?deactID=".$row['roleID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
+                       echo "<a href='../controllers/staff-role-controller.php?deactID=".$row['roleID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
                        echo "</td>";
                        echo "</tr>";
                     }
@@ -57,7 +57,7 @@
             </tbody>
         </table>
     </div>
-    <!-- add role modals -->
+    <!-- add role modal -->
     <div class="modal fade" id="AddRoleModal" tabindex="-1" role="dialog" aria-labelledby="AddRoleLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -85,7 +85,37 @@
             </div>
         </div>
     </div>
-
+    <!-- edit role modal -->
+    <div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog" aria-labelledby="EditRoleLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="EditRoleLabel">Edit Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="../controllers/staff-role-controller.php" method="POST" name="editRoleForm">
+                        <div class="form-group">
+                            <input type="hidden" name="passedID" id="passedID">
+                        </div>
+                        <div class="form-group">
+                            <label for="rolename" >Role Name:</label>
+                            <input type="text" class="form-control" id="rolename" name="roleNames">
+                        </div>
+                        <div class="form-group">
+                            <label for="roleDescArea">Role Description:</label>
+                            <textarea name="roleDescription" id="roleDescArea" class="form-control" columns= "10" rows="5"></textarea>
+                        </div>   
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-primary" name="editRole">Submit</button>
+                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
