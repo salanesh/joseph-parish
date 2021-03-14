@@ -41,7 +41,7 @@
                 $param2[] = $_POST["roleNames"];
             }
             if($_POST["roleDescription"]){
-                $sqlSelector = " roleDesc=?,";
+                $sqlSelector .= " roleDesc=?,";
                 $param1 .="s";
                 $param2[] = $_POST["roleDescription"];
             }
@@ -50,21 +50,22 @@
             $sqlSelector = substr_replace($sqlSelector,"",-1);
             $sqlSelector.=" where roleID=?";
             
-            var_dump($param1);
-            echo('<br>');
-            var_dump($param2);
-            echo("<br>");
-            var_dump($sqlSelector);
+            //var_dump($param1);
+            //echo('<br>');
+            //var_dump($param2);
+            //echo("<br>");
+            //var_dump($sqlSelector);
 
-            // $statement->bind_param($param1,$param2);
-            // $statement->execute();
+             $statement = $connection->prepare($sqlSelector);
+             $statement->bind_param($param1,...$param2);
+             $statement->execute();
 
-            // $statement->close();
-            // $connection->close();
-            // $succText="Successfully edited user role";
+             $statement->close();
+             $connection->close();
+             $succText="Successfully edited user role";
         }
 
-        //header("Location: ../staff-view/staff-manage-roles.php")
+        header("Location: ../staff-view/staff-manage-roles.php")
     ?>
 </body>
 </html>
