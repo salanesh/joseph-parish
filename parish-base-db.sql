@@ -72,6 +72,7 @@ CREATE TABLE Reservations(
     FOREIGN KEY(serviceID) references Church_Services(serviceID)
 );
 CREATE TABLE Marriage(
+    reservationID int,
     serviceID int,
     groomName varchar(20),
     groomDadName varchar(20),
@@ -84,9 +85,11 @@ CREATE TABLE Marriage(
     brideAge int,
     brideAddress text,
     PRIMARY KEY(serviceID),
-    FOREIGN KEY(serviceID) references Church_Services(serviceID)
+    FOREIGN KEY(serviceID) references Church_Services(serviceID),
+    FOREIGN KEY(reservationID) references Reservations(reservationID)
 );
 CREATE TABLE confirmation(
+    reservationID int,
     serviceID int,
     confirmLname varchar(20),
     confirmFname varchar(20),
@@ -97,9 +100,11 @@ CREATE TABLE confirmation(
     birthdate date,
     baptismdate date,
     PRIMARY KEY(serviceID),
-    FOREIGN KEY(serviceID) references Church_Services(serviceID)
+    FOREIGN KEY(serviceID) references Church_Services(serviceID),
+    FOREIGN KEY(reservationID) references Reservations(reservationID)
 );
 CREATE TABLE Baptism(
+    reservationID int,
     serviceID int,
     childFname varchar(20),
     childLname varchar(20),
@@ -109,12 +114,15 @@ CREATE TABLE Baptism(
     birthplace varchar(50),
     birthdate date,
     PRIMARY KEY(serviceID), 
-    FOREIGN KEY(serviceID) references Church_Services(serviceID)
+    FOREIGN KEY(serviceID) references Church_Services(serviceID),
+    FOREIGN KEY(reservationID) references Reservations(reservationID)
 );
 CREATE TABLE Mass(
+    reservationID int,
     serviceID int,
     details text,
     nameOfDead varchar(50),
     PRIMARY KEY(serviceID),
-    FOREIGN KEY(serviceID) references Church_Services(serviceID)
+    FOREIGN KEY(serviceID) references Church_Services(serviceID),
+    FOREIGN KEY(reservationID) references Reservations(reservationID)
 );
