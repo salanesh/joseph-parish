@@ -17,7 +17,7 @@
         <div class="card mx-auto my-5 special-card" style="width: 30rem">
             <div class="card-body">
                 <h2 class="text-center">Login</h2>
-                <form action="../controllers/login-controller.php" method="POST">
+                <form action="controllers/login-controller.php"  method="POST">
                     <div class="form-group">
                         <label for="login-email-input">Email address</label>
                         <div class="input-group" id="login-email-input">
@@ -26,7 +26,7 @@
                                     <img src="bootstrap-icons-1.0.0-alpha5/person.svg">
                                 </span>
                             </div>
-                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
@@ -38,8 +38,9 @@
                                     <img src="bootstrap-icons-1.0.0-alpha5/lock-fill.svg">
                                 </span>
                             </div>
-                        <input type="password" class="form-control" placeholder="Password">
-                        </div>
+                        <input type="password" class="form-control" placeholder="Password" name="userPass">
+        
+                    </div>
                         
                     </div>
                     <div class="form-check">
@@ -68,36 +69,40 @@
         </div>
     
         <div class="modal-body">
-            <form>
+            <form action="controllers/login-registration-controller.php" method="POST">
                     <div class="form-group">
                         <label for="firstNameInput">First Name</label>
-                        <input type="text" class="form-control" id="firstNameInput" placeholder="Enter first name">
+                        <input type="text" class="form-control" id="firstNameInput" placeholder="Enter first name" name="parishionersfname">
     
                     </div>
                     <div class="form-group">
                         <label for="middleNameInput">Middle Name</label>
-                        <input type="text" class="form-control" id="middleNameInput" placeholder="Enter middle name">
+                        <input type="text" class="form-control" id="middleNameInput" placeholder="Enter middle name" name="parishionersmname">
                     </div>
                     <div class="form-group">
                         <label for="lastNameInput">Last Name</label>
-                        <input type="text" class="form-control" id="lastNameInput" placeholder="Enter last name">
+                        <input type="text" class="form-control" id="lastNameInput" placeholder="Enter last name" name="parishionerslname">
                     </div>
                     <div class="form-group">
                         <label for="bday-selector">Birthday</label>
-                        <input type="date" class="form-control" id="bday-selector">
+                        <input type="date" class="form-control" id="bday-selector" name="parishionersbday">
                     </div>
                     <div class="form-group">
                         <label for="homeAddressInput">Home Address</label>
-                        <input type="text" class="form-control" id="homeAddressInput" aria-describedby="emailHelp" placeholder="Home Address">
+                        <input type="text" class="form-control" id="homeAddressInput" aria-describedby="emailHelp" placeholder="Home Address" name="parishionersaddress">
                     </div>
                     <div class="form-group">
+                            <label for="parishioner-contact-input">Contact Number</label>
+                            <input type="number" class="form-control" placeholder="+63"id="parishioner-contact-input" name="parishionerscontact">
+                        </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="parishionersemail">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="parishionerspassword">
                     </div>
                     <div class="container text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
