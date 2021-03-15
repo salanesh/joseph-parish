@@ -11,6 +11,62 @@
 </head>
 <body>
 <script src="../custom-js/staff-functions.js"></script>
+     <script>
+            function validate(evt){
+            var theEvent = evt || window.event;
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode( key );
+            var regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+        function validateForm(){
+            var parishionersfname = document.getElementById("fname").value;
+            if(parishionersfname == ""){
+                alert("Please Enter First Name");
+                return false;
+            }
+            var parishionersmname = document.getElementById("mname").value;
+            if(parishionersmname == ""){
+                alert("Please Enter Middle Name");
+                return false;
+            }
+            var parishionerslname = document.getElementById("lname").value;
+            if(parishionerslname == ""){
+                alert("Please Enter Last Name");
+                return false;
+            }
+            var parishionersbday = document.getElementById("parishioners-bday-selector").value;
+            if(parishionersbday == ""){
+                alert("Please Enter Birthday");
+                return false;
+            }
+            var parishionersaddress = document.getElementById("parishioners-address-input").value;
+            if(parishionersaddress == ""){
+                alert("Please Enter Address");
+                return false;
+            }
+            var parishionersemail = document.getElementById("parishioners-email-input").value;
+            if(parishionersemail == ""){
+                alert("Please Enter Email");
+                return false;
+            }
+            var parishionerspassword = document.getElementById("parishioners-pass-input").value;
+            if(parishionerspassword == ""){
+                alert("Please Enter Password");
+                return false;
+            }
+            var message = document.getElementById("message").value;
+            if(message == ""){
+                alert("Please Enter Message");
+                return false;
+            }
+
+        }
+        </script>
+
     <?php
     require("../shared-html/staffnav.html");
     ?>
@@ -104,18 +160,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../controllers/parishioners-controller.php" method="POST" name="parishionersSignupForm" onsubmit="return(staffValidator());">
+                <form action="../controllers/parishioners-controller.php" method="POST" name="form" id="form" onsubmit="return validateForm()"> 
+                <form action="../controllers/parishioners-controller.php" method="POST" name="parishionersSignupForm" onsubmit="return(staffValidator());">
                         <div class="form-group">
                             <label for="parishioners-name">Parishioner Name:</label>
                             <div class="input-group" id="parishioners-name">
-                                <input type="text" class="form-control" placeholder="first name"  name="fname">
-                                <input type="text" class="form-control" placeholder="middle name"  name="mname">
-                                <input type="text" class="form-control" placeholder="last name"  name="lname">
+                                <input type="text" class="form-control" placeholder="first name"  name="fname" id="fname">
+                                <input type="text" class="form-control" placeholder="middle name"  name="mname" id="mname">
+                                <input type="text" class="form-control" placeholder="last name"  name="lname" id="lname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="parishioners-bday-selector" >Parishioner's Birthday:</label>
-                            <input type="date" class="form-control" id="parishioners-bday-selector" name="parishionersBday">
+                            <input type="date" class="form-control" id="parishioners-bday-selector" name="parishionersBday" id="parishionersBday">
                         </div>
                         <div class="form-group">
                             <label for="parishioners-address-input">Parishioners's Address</label>
@@ -177,16 +234,9 @@
                             <label for="parishioners-pass-input">Parishioner Password</label>
                             <input type="password" id="parishioners-pass-input" name="parishionersPassword">
                         </div>
+                    
+                
                         
-                            <?php
-                                $sql="SELECT * FROM roles";
-                                $results=mysqli_query($connection,$sql); 
-                                while($row = mysqli_fetch_assoc($results)) {
-                                    echo "<option value='$row[roleID]'>".$row["roleName"]."</option>";
-                                }
-                            ?>
-                            </select>
-                        </div>
                         <div class="container text-center">
                             <button type="submit" class="btn btn-primary" name="editParishioners">Submit</button>
                          </div>

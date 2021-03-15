@@ -12,7 +12,7 @@
     if(isset($_POST["addparishioners"])){
         addparishioners();
     }
-    if(isset($_POST["editparishioners"])){
+    if(isset($_POST["editParishioners"])){
         editparishioners();
     }
     if(isset($_GET["deactID"])){
@@ -49,7 +49,7 @@
         // echo "<br>";
         //statements now//
         $statement = $connection->prepare("INSERT INTO users(roleID,fName,mName,lName,userBday,userAddress,email,userPass,userStatus) values(?,?,?,?,?,?,?,?,?)");
-        $statement->bind_param("issssssis",$roleSelected,$parishionersFname,$parishionersLname,$parishionersMname,$parishionersBday,$parishionersAddress,$parishionersEmail,$parishionersPassword,$parishionersStatus);
+        $statement->bind_param("isssssssi",$roleSelected,$parishionersFname,$parishionersLname,$parishionersMname,$parishionersBday,$parishionersAddress,$parishionersEmail,$parishionersPassword,$parishionersStatus);
         $statement->execute();
         // echo('the shit has been added');
        $statement->close();
@@ -59,7 +59,7 @@
 
     function editparishioners(){
         require("../custom-php/connector.php");
-
+        
          $param1="";
          $sqlSelector = "UPDATE users set";
          if(!empty($_POST["rolekey"])){
@@ -75,16 +75,16 @@
          if(!empty($_POST["lname"])){
              $sqlSelector .=" lName=?,";
              $param1 .="s";
-             $param2[] = $_POST["parishionersLname"];
+             $param2[] = $_POST["lname"];
          }
          if(!empty($_POST["mname"])){
-             $sqlSelector .=" mName=?,";
+             $sqlSelector .=" mname=?,";
              $param1 .="s";
-             $param2[] = $_POST["parishionersMname"];
+             $param2[] = $_POST["mname"];
          }
          if(!empty($_POST["parishionersBday"])){
              $sqlSelector .=" userBday=?,";
-             $param1 .="i";
+             $param1 .="s";
              $param2[] = $_POST["parishionersBday"];
          }
          if(!empty($_POST["parishionersAddress"])){
@@ -93,7 +93,7 @@
              $param2[] = $_POST["parishionersAddress"];
          }
          if(!empty($_POST["parishionersEmail"])){
-             $sqlSelector .=" userEmail=?,";
+             $sqlSelector .=" email=?,";
              $param1 .="s";
              $param2[] = $_POST["parishionersEmail"];
          }
@@ -115,20 +115,20 @@
          $param2[]=$_POST["passedID"];
          $sqlSelector=substr_replace($sqlSelector,"",-1);
          $sqlSelector.=" where userID=?";
-        //  echo "<h1>";
-        //  echo $sqlSelector;
-        //  echo "</h1>";
-        //  echo "<br>";
-        // var_dump($param1);
-        // echo "<br>";
-        // var_dump($param2);
+          echo "<h1>";
+          echo $sqlSelector;
+          echo "</h1>";
+          echo "<br>";
+         var_dump($param1);
+         echo "<br>";
+         var_dump($param2);
 
-          $stmt = $connection->prepare($sqlSelector);
-          $stmt->bind_param($param1,...$param2);
-          $stmt->execute();
-          $stmt->close();
-          $connection->close();
-          $succText="Successfully updated the parishioner data";
+         $stmt = $connection->prepare($sqlSelector);
+         $stmt->bind_param($param1,...$param2);
+         $stmt->execute();
+         $stmt->close();
+         $connection->close();
+         $succText="Successfully updated the parishioner data";
     }
 
     function deactivateparishioners(){
