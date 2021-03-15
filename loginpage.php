@@ -17,7 +17,7 @@
         <div class="card mx-auto my-5 special-card" style="width: 30rem">
             <div class="card-body">
                 <h2 class="text-center">Login</h2>
-                <form action="controllers/login-controller.php" method="POST">
+                <form action="controllers/login-controller.php"  method="POST">
                     <div class="form-group">
                         <label for="login-email-input">Email address</label>
                         <div class="input-group" id="login-email-input">
@@ -26,7 +26,7 @@
                                     <img src="bootstrap-icons-1.0.0-alpha5/person.svg">
                                 </span>
                             </div>
-                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="userEmail">
+                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
@@ -38,8 +38,9 @@
                                     <img src="bootstrap-icons-1.0.0-alpha5/lock-fill.svg">
                                 </span>
                             </div>
-                        <input type="password" class="form-control" placeholder="Password" name="userPassword">
-                        </div>
+                        <input type="password" class="form-control" placeholder="Password" name="userPass">
+        
+                    </div>
                         
                     </div>
                     <div class="form-check">
