@@ -3,142 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Announcements</title>
+    <title>Manage Parishioners</title>
     <?php
     include("../shared-html/header-links-loggedin.html");
+    require("../custom-php/connector.php");
     ?>
 </head>
 <body>
+<script src="../custom-js/staff-functions.js"></script>
+     <script>
+            function validate(evt){
+            var theEvent = evt || window.event;
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode( key );
+            var regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+        function validateForm(){
+            var parishionersfname = document.getElementById("fname").value;
+            if(parishionersfname == ""){
+                alert("Please Enter First Name");
+                return false;
+            }
+            var parishionersmname = document.getElementById("mname").value;
+            if(parishionersmname == ""){
+                alert("Please Enter Middle Name");
+                return false;
+            }
+            var parishionerslname = document.getElementById("lname").value;
+            if(parishionerslname == ""){
+                alert("Please Enter Last Name");
+                return false;
+            }
+            var parishionersbday = document.getElementById("parishioners-bday-selector").value;
+            if(parishionersbday == ""){
+                alert("Please Enter Birthday");
+                return false;
+            }
+            var parishionersaddress = document.getElementById("parishioners-address-input").value;
+            if(parishionersaddress == ""){
+                alert("Please Enter Address");
+                return false;
+            }
+            var parishionersemail = document.getElementById("parishioners-email-input").value;
+            if(parishionersemail == ""){
+                alert("Please Enter Email");
+                return false;
+            }
+            var parishionerspassword = document.getElementById("parishioners-pass-input").value;
+            if(parishionerspassword == ""){
+                alert("Please Enter Password");
+                return false;
+            }
+            var message = document.getElementById("message").value;
+            if(message == ""){
+                alert("Please Enter Message");
+                return false;
+            }
+
+        }
+        </script>
+
     <?php
     require("../shared-html/staffnav.html");
     ?>
-    
     <div class="container-fluid staff-content">
-    	 <div class="container-fluid">
-            <form class="form-inline my-2 mx-2">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Parishioners" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    	
-        <div class="container-fluid my-3 mx-auto" style="width:20rem">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#addParishionerModal">Add Parishioner</button>
-    	</div>
+    <div class="container-fluid">
+        <form class="form-inline my-2 mx-2">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Parishioners" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    
+    
+    <div class="container-fluid my-3 mx-auto" style="width: 20rem">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#AddParishionersModal">Add Parishioner</button>
+    </div>
+    <?php
+        if (isset($_GET['success'])){
+            $success = $_GET['success'];
+            echo '<div class="alert alert-success text-center">';
+            echo '<button class="close" data-dismiss="alert">X</button>';
+            echo $success;
+            echo '</div>';
+        }
+    ?>
+    <div class="container-fluid mx-auto" style="width: 70rem">                     
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Parishioner ID</th>
+                    <th scope="col">Parishioner Name</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+                    require("../custom-php/connector.php");
+                    $sql="SELECT * from users where userStatus !=0";
+                    $shit=mysqli_query($connection,$sql); 
+                    while($row = mysqli_fetch_assoc($shit)) {
+                       echo "<tr>";
+                       echo "<th>";
+                       echo $row['userID'];
+                       echo "</th>";
+                       echo "<td>";
+                       echo $row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['userBday'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['userAddress'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['email'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['userPass'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['userStatus'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editParishionersModal'>Edit</button>";
+                       echo "&nbsp";
+                       echo "<a href='../controllers/parishioners-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
+                       echo "</td>";
+                       echo "</tr>";
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    
 
-    	<div class="container-fluid mx-auto" style="width: 70rem">
-            <table class="table table-bordered table-hover">
-                <thead class="bg-grey">
-                    <tr>
-                        <th scope="col">Parishioner Name</th>
-                        <th scope="col">Parishioner ID</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <!-- put back end shit here -->
-                </tbody>
-            </table>
-        </div>
- </div>
- <!-- Add Parishioner Modal -->
- <div class="modal fade" id="addParishionerModal" tabindex="-1" role="dialog" aria-labelledby="EditEmployeeLabel" aria-hidden="true">
+    <!-- Add Employee Modal -->
+
+    <div class="modal fade" id="AddParishionersModal" tabindex="-1" role="dialog" aria-labelledby="AddParishionersLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="EditEmployeeLabel">Edit Employee</h5>
+                    <h5 class="modal-title" id="AddParishionersLabel">Add Parishioner</h5>
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../controllers/parishioners-controller.php" method="POST" name="parishionersSignupForm">
-        
+                <form action="../controllers/parishioners-controller.php" method="POST" name="form" id="form" onsubmit="return validateForm()"> 
+                <form action="../controllers/parishioners-controller.php" method="POST" name="parishionersSignupForm" onsubmit="return(staffValidator());">
                         <div class="form-group">
-                            <label for="parishioner-name">Parishioner Name:</label>
-                            <div class="input-group" id="parishioner-name">
-                                <input type="text" class="form-control" placeholder="first name" name="parishionersfname">
-                                <input type="text" class="form-control" placeholder="middle name" name="parishionersmname">
-                                <input type="text" class="form-control" placeholder="last name" name ="parishionerslname">
+                            <label for="parishioners-name">Parishioner Name:</label>
+                            <div class="input-group" id="parishioners-name">
+                                <input type="text" class="form-control" placeholder="first name"  name="fname" id="fname">
+                                <input type="text" class="form-control" placeholder="middle name"  name="mname" id="mname">
+                                <input type="text" class="form-control" placeholder="last name"  name="lname" id="lname">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="parishioner-bday-selector">Parishioner's Birthday:</label>
-                            <input type="date" class="form-control" id="parishioner-bday-selector" name="parishionersbday">
+                            <label for="parishioners-bday-selector" >Parishioner's Birthday:</label>
+                            <input type="date" class="form-control" id="parishioners-bday-selector" name="parishionersBday" id="parishionersBday">
                         </div>
                         <div class="form-group">
-                            <label for="parishioner-address-input">Parishioner's Address</label>
-                            <textarea class="form-control" id="parishioner-address-input" rows="2" id="parishioner-address-input" name ="parishionersaddress"></textarea>
+                            <label for="parishioners-address-input">Parishioners's Address</label>
+                            <textarea class="form-control" id="parishioners-address-input" rows="2" id="parishioners-address-input" name ="parishionersAddress"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="parishioner-contact-input">Parishioner's Contact Number</label>
-                            <input type="number" class="form-control" placeholder="00000000000"id="parishioner-contact-input" name="parishionerscontact">
-                        </div>
+                            <label for="parishioners-email-input">Parishioner's Email Address</label>
+                            <input type="email" class="form-control" placeholder="example@email.com"id="parishioners-email-input" name="parishionersEmail" >
+                        </div>   
                         <div class="form-group">
-                            <label for="parishioner-email-input">Parishioner's Email Address</label>
-                            <input type="email" class="form-control" placeholder="example@email.com"id="parishioner-email-input" name ="parishionersemail">
-                        </div>
-                        <div class="form-group">
-                        	<label for="parishioner-password-reset">Password</label>
-                            <input type="password" class="form-ccontrol" placeholder="" id="parishioner-password-reset" name="parishionerspasswordgi">
-                        </div>
+                            <label for="parishioners-pass-input">Parishioner Password</label>
+                            <input type="password" id="parishioners-pass-input" name="parishionersPassword">
+
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="addparishioners">Submit</button>
                          </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Edit Parishioner Modal -->
-    <div class="modal fade" id="editParishionerModal" tabindex="-1" role="dialog" aria-labelledby="EditEmployeeLabel" aria-hidden="true">
+    </div>
+    <!-- edit employees modal -->
+    <div class="modal fade" id="editParishionersModal" tabindex="-1" role="dialog" aria-labelledby="editParishionersLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="EditEmployeeLabel">Edit Employee</h5>
+                    <h5 class="modal-title" id="editParishionersLabel">Edit Parishioner</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form> 
-        
+                    <form action="../controllers/parishioners-controller.php" method="POST" name="parishionersUpdateForm">
                         <div class="form-group">
-                            <label for="parishioner-name">Parishioner Name:</label>
-                            <div class="input-group" id="parishioner-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                            <input type="hidden" name="passedID" id="passedID">
+                        </div>
+                        <div class="form-group">
+                            <label for="parishioners-name">Parishioner Name:</label>
+                            <div class="input-group" id="parishioners-name">
+                                <input type="text" class="form-control" placeholder="first name"  name="fname">
+                                <input type="text" class="form-control" placeholder="middle name"  name="mname">
+                                <input type="text" class="form-control" placeholder="last name"  name="lname">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="parishioner-bday-selector">Parishioner's Birthday:</label>
-                            <input type="date" class="form-control" id="parishioner-bday-selector">
+                            <label for="parishioners-bday-selector" >Parishioner's Birthday:</label>
+                            <input type="date" class="form-control" id="parishioners-bday-selector" name="parishionersBday">
                         </div>
                         <div class="form-group">
-                            <label for="parishioner-address-input">Parishioner's Address</label>
-                            <textarea class="form-control" id="parishioner-address-input" rows="2" id="parishioner-address-input"></textarea>
+                            <label for="parishioners-address-input">Parishioners's Address</label>
+                            <textarea class="form-control" id="parishioners-address-input" rows="2" id="parishioners-address-input" name ="parishionersAddress"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="parishioner-contact-input">Parishioner's Contact Number</label>
-                            <input type="number" class="form-control" placeholder="00000000000"id="parishioner-contact-input">
-                        </div>
+                            <label for="parishioners-email-input">Parishioner's Email Address</label>
+                            <input type="email" class="form-control" placeholder="example@email.com"id="parishioners-email-input" name="parishionersEmail" >
+                        </div>   
                         <div class="form-group">
-                            <label for="parishioner-email-input">Parishioner's Email Address</label>
-                            <input type="email" class="form-control" placeholder="example@email.com"id="parishioner-email-input">
+                            <label for="parishioners-pass-input">Parishioner Password</label>
+                            <input type="password" id="parishioners-pass-input" name="parishionersPassword">
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" placeholder="" id="parishioner-password-reset">
-                             <label for="parishioner-password-reset">Reset Password?</label>
-                        </div>
+                    
+                
+                        
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="editParishioners">Submit</button>
                          </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
