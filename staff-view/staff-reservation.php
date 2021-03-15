@@ -11,6 +11,7 @@
 <body>
     <?php
     require("../shared-html/staffnav.html");
+    require("../custom-php/connector.php");
     ?>
     <div class="container-fluid staff-content">
     <div class="container-fluid">
@@ -62,6 +63,10 @@
                     <form>
                         <div class="form-group">
                             <label for="service-selector">Select Service: </label>
+                            <?php
+    
+                            $sql = "SELECT * FROM "
+                            ?>
                             <select class="form-control" id="service-selector">
                                 <option>Marriage</option>
                                 <option>Baptism</option>
