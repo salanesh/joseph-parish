@@ -24,7 +24,7 @@
 			  <div class="dropdown-menu" aria-labelledby="servicesDropdown">
 			    <button class="dropdown-item" onclick="showMarriage()">Monthly Marriages</button>
 			    <button class="dropdown-item" onclick="showServiceShare()">Percentage Of Services</button>
-			    <button class="dropdown-item" onclick=" ">Chart 4</button>
+			    <!-- <button class="dropdown-item" onclick=" ">Chart 4</button> -->
 			  </div>
 			</div>
     	</div>
@@ -40,6 +40,7 @@
                 type: 'bar',
                 data:{
                     labels:['January','February','March','April','May'],
+                    // 'June','July','August','September','October','November','December'
                     datasets:[{
                         label:'Marriages',
                         data:[
@@ -50,6 +51,7 @@
                             50
                         ],
                         backgroundColor:['blue','green','violet','cyan','red']
+                        // , 'black', 'orange', 'gold', 'yellow'
                     }]
                 },
                 options:{

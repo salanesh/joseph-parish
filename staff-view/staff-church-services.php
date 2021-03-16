@@ -7,7 +7,9 @@
     <?php
     include("../shared-html/header-links-loggedin.html");
     ?>
+    <script src="../custom-js/staff-functions.js"></script>
     <script>
+    <!-- validation modal -->
     function validate(evt){
             var theEvent = evt || window.event;
             var key = theEvent.keyCode || theEvent.which;
@@ -57,23 +59,7 @@
     <?php
     require("../shared-html/staffnav.html");
     require("../custom-php/connector.php");
-    // if(isset($connection)){
-    //    echo("<script>console.log('sod');</script>");
-    //}else{
-    //    echo("<script>console.log('wal sod');</script>");
-    //}
-    //$test = "SELECT * FROM church_services";
-
-    // $result=mysqli_query($connection,$test);
-
-    //  $row=mysqli_fetch_array($result);
-    //  echo("<script>console.log('$row');</script>");
-  
-    //  var_dump($row);
-    // echo("<script>console.log('sod');</script>");
     ?>
-    
-    
     <div class="container-fluid staff-content">
 
     	 <div class="container-fluid">
@@ -108,8 +94,10 @@
                         echo "<td>$row[2]</td>";
                         echo "<td>$row[3]</td>";
                         echo "<td class='desc text-center'>";   
-                        echo "<a><button class='btn btn-secondary open-editservice' data-toggle='modal' data-id=".$row['serviceID']." data-target='#editServiceModal'> Edit </button></a> ";
-                        echo "<a href='../controllers/staff-service-controller.php?deleteID=".$row['serviceID']."'><button class='btn btn-danger'>Delete</button></a>";
+                        // echo "<button class='btn btn-outline-secondary open-viewUser' data-toggle='modal' data-id=".$row['serviceID']." data-target='#viewServiceModal'>View</button>";
+                        echo "<button class='btn btn-outline-primary open-editUser' data-toggle='modal' data-id=".$row['serviceID']." data-target='#editServiceModal'>Edit</button>";
+                        echo "&nbsp";
+                        echo "<a href='../controllers/staff-service-controller.php?deleteID=".$row['serviceID']."'><button class='btn btn-outline-danger'>Delete</button></a>";
                         echo "</td>";
                         echo "</tr>";
                        }
@@ -122,7 +110,7 @@
         </div>
     </div>	
 </div>
-<!-- add service modal -->
+<!-- add services modal -->
 <div class="modal fade" id="addServices" tabindex="-1" role="dialog" aria-labelledby="addServices" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -133,34 +121,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- <form action="../controllers/staff-service-controller.php" method="POST" name="staffAddService"> 
-        
-                        <div class="form-group">
-                            <label for="service-name">Service Name:</label>
-                            <div class="input-group" id="service-name">
-                                <input type="text" class="form-control" name="servicenames">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="service-desc">Service Description:</label>
-                            <textarea class="form-control" id="service-desc" rows="2" name="servicedescs"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="service-price">Downpayment Cost:</label>
-                            <input type="number" class="form-control" placeholder="₱000.00"id="service-price" name="serviceprices">
-                        </div>
-                        <div class="form-group">
-                            <label for="service-pic">Event Picture</label>
-                            <input type="file" class="form-control" placeholder="picture"id="service-pic" name="servicepics">
-                        </div>
-                        <div class="form-group">
-                            <label for="service-reqs">Requirements:</label>
-                            <textarea class="form-control" id="service-reqs" rows="2" name="servicereqss"></textarea>
-                        </div>
-                        <div class="container text-center">
-                            <button type="submit" class="btn btn-primary" name=addID>Submit</button>    
-                         </div>
-                    </form> -->
                     <form action="../controllers/staff-service-controller.php" method="POST" name="form" id="form" onsubmit="return validateForm()"> 
         
                         <div class="form-group">
@@ -193,51 +153,50 @@
             </div>
         </div>
     </div>
-    <!-- edit employees modal -->
-    <div class="modal fade" id="editServiceModal" tabindex="-1" role="dialog" aria-labelledby="editServiceLabel" aria-hidden="true">
+<!-- edit services modal -->
+<div class="modal fade" id="editServiceModal" tabindex="-1" role="dialog" aria-labelledby="EditSerivceLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editServiceLabel">Edit Service</h5>
+                    <h5 class="modal-title" id="EditServiceLabel">Edit Role</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="../controllers/staff-service-controller.php" method="POST" name="staffEditService">
+                    <form action="../controllers/staff-service-controller.php" method="POST" name="editServiceForm">
                         <div class="form-group">
                             <input type="hidden" name="passedID" id="passedID">
                         </div>
                         <div class="form-group">
-                            <label for="service-name">Service Name:</label>
-                            <div class="input-group" id="service-name">
-                                <input type="text" class="form-control" name="servicenames">
-                            </div>
+                            <label for="servicenames" >Service Name:</label>
+                            <input type="text" class="form-control" id="servicenames" name="serviceNames">
                         </div>
                         <div class="form-group">
-                            <label for="service-desc">Service Description:</label>
-                            <textarea class="form-control" id="service-desc" rows="2" name="servicedescs"></textarea>
+                            <label for="servicedecs" >Service Description:</label>
+                            <input type="text" class="form-control" id="servicedecs" name="serviceDescs">
                         </div>
                         <div class="form-group">
                             <label for="service-price">Downpayment Cost:</label>
-                            <input type="number" class="form-control" placeholder="₱000.00"id="service-price" name="serviceprices">
+                            <input type="number" class="form-control" placeholder="₱000.00"id="serviceprices" name="servicePrices">
                         </div>
                         <div class="form-group">
                             <label for="service-pic">Event Picture</label>
-                            <input type="file" class="form-control" placeholder="picture"id="service-pic" name="servicepics">
+                            <input type="file" class="form-control" placeholder="picture"id="servicepics" name="servicePics">
                         </div>
                         <div class="form-group">
-                            <label for="service-reqs">Requirements:</label>
-                            <textarea class="form-control" id="service-reqs" rows="2" name="servicereqss"></textarea>
+                            <label for="servicereqs" >Requirements:</label>
+                            <input type="text" class="form-control" id="servicereqs" name="serviceReqss">
                         </div>
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary" name=editID>Submit</button>
+                            <button type="submit" class="btn btn-primary" name="editID">Submit</button>
                          </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- view service modal -->
 </body>
-</html> 
+</html>
