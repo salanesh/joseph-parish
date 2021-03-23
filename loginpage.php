@@ -9,15 +9,15 @@
     ?>
 </head>
 <body>
+<script type="text/javascript" src="custom-js/validation-functions.js"></script>
     <?php
    require('shared-html/navbar.html');
    ?>
-
     <div class="general-content">
         <div class="card mx-auto my-5 special-card" style="width: 30rem">
             <div class="card-body">
                 <h2 class="text-center">Login</h2>
-                <form action="controllers/login-controller.php"  method="POST">
+                <form action="controllers/login-controller.php"  method="POST" name="login-form">
                     <div class="form-group">
                         <label for="login-email-input">Email address</label>
                         <div class="input-group" id="login-email-input">
@@ -29,7 +29,7 @@
                             <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
+                    </div> 
                     <div class="form-group">
                         <label for="login-password-input">Password</label>
                         <div class="input-group" id="login-password-input">
@@ -69,19 +69,19 @@
         </div>
     
         <div class="modal-body">
-            <form action="controllers/login-registration-controller.php" method="POST">
+            <form action="controllers/login-registration-controller.php" method="POST" name="parish-registration-form" onsubmit="return validateRegistration()">
                     <div class="form-group">
                         <label for="firstNameInput">First Name</label>
-                        <input type="text" class="form-control" id="firstNameInput" placeholder="Enter first name" name="parishionersfname">
+                        <input type="text" class="form-control" id="firstNameInput" placeholder="Enter first name" name="parishionersfname" required>
     
                     </div>
                     <div class="form-group">
                         <label for="middleNameInput">Middle Name</label>
-                        <input type="text" class="form-control" id="middleNameInput" placeholder="Enter middle name" name="parishionersmname">
+                        <input type="text" class="form-control" id="middleNameInput" placeholder="Enter middle name" name="parishionersmname" required>
                     </div>
                     <div class="form-group">
                         <label for="lastNameInput">Last Name</label>
-                        <input type="text" class="form-control" id="lastNameInput" placeholder="Enter last name" name="parishionerslname">
+                        <input type="text" class="form-control" id="lastNameInput" placeholder="Enter last name" name="parishionerslname" required>
                     </div>
                     <div class="form-group">
                         <label for="bday-selector">Birthday</label>
@@ -102,6 +102,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
+
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="parishionerspassword">
                     </div>
                     <div class="container text-center">
