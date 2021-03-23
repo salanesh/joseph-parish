@@ -45,7 +45,7 @@
     $statement->close();
     $connection->close();
 
-    header( "Location: ../loginpage.php" );
+   header( "Location: ../loginpage.php" );
 
 
     ?>
