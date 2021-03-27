@@ -22,12 +22,13 @@
     </div>
     
     
-    <div class="container-fluid my-3 mx-auto" style="width: 20rem">
-        <button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffReservationModal">Add Walk-In Reservation</button>
+    <div class="container-fluid my-3 mx-auto">
+        <button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#massReservationModal">Reserve Mass</button>
+        <button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#marriageReservationModal">Marriage</button>
+        <button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#baptismReservationModal">Baptism</button>
+        <button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationReservationModal">Confirmation</button>
     </div>
-    <div class="container-fluid my-3 mx-auto" style="width: 20rem">
-        <button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#viewRequirementsModal">View Requirements</button>
-    </div>
+    
     
     <div class="container-fluid mx-auto" style="width: 70rem">
         <table class="table table-bordered table-hover">
@@ -49,30 +50,18 @@
 
     </div>
     
-    <!-- Staff Adding Reservations for walk-in Modal -->
-    <div class="modal fade" id="addStaffReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
+    <!-- marriage modal -->
+    <div class="modal fade" id="marriageReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addReservationLabel">Add Reservation</h5>
+                    <h5 class="modal-title" id="addReservationLabel">Reserve Marriage</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
-                            <label for="service-selector">Select Service: </label>
-                            <?php
-    
-                            $sql = "SELECT * FROM "
-                            ?>
-                            <select class="form-control" id="service-selector">
-                                <option>Marriage</option>
-                                <option>Baptism</option>
-                                <option>Confirmation</option>
-                            </select>
-                        </div>
                         <div class="form-group">
                             <label for="groom-name">Groom Name:</label>
                             <div class="input-group" id="groom-name">
@@ -136,6 +125,124 @@
                         <div class="form-group">
                             <label for="bride-address-input">Bride's Address</label>
                             <textarea class="form-control" id="bride-address-input" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="reservation-date-selector">Reservation Date:</label>
+                            <input type="date" class="form-control" id="reservation-date-selector">
+                        </div>
+                        <div class="form-group">
+                            <h2>Downpayment: 250<h2>
+                        </div>
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- baptism modal -->
+    <div class="modal fade" id="baptismReservationModal" tabindex="-1" role="dialog" aria-labelledby="addBaptismLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBaptismLabel">Reserve Baptism</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="child-name">Child Name:</label>
+                            <div class="input-group" id="child-name">
+                                <input type="text" class="form-control" placeholder="first name" name="child-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="child-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="child-lname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="father-name">Father Name:</label>
+                            <div class="input-group" id="father-name">
+                                <input type="text" class="form-control" placeholder="first name" name="dad-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="dad-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="dad-lname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mother-name">Mother Name:</label>
+                            <div class="input-group" id="mother-name">
+                                <input type="text" class="form-control" placeholder="first name" name="mom-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="mom-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="mom-lname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthplace">Child birthplace</label>
+                            <input type="text" id="birthplace"class="form-control" name="child-birthplace">
+                        </div>
+                        <div class="form-group">
+                            <label for="child-bday">Child Birthdate:</label>
+                            <input type="date" class="form-control" id="child-bday" name="child-bday">
+                        </div>
+                        <div class="form-group">
+                            <label for="reservation-date-selector">Reservation Date:</label>
+                            <input type="date" class="form-control" id="reservation-date-selector">
+                        </div>
+                        <div class="form-group">
+                            <h2>Downpayment: 250<h2>
+                        </div>
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- confirmation modal -->
+    <div class="modal fade" id="confirmationReservationModal" tabindex="-1" role="dialog" aria-labelledby="addConfirmationLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addConfirmationLabel">Reserve Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                    <div class="form-group">
+                            <label for="child-name">Child Name:</label>
+                            <div class="input-group" id="child-name">
+                                <input type="text" class="form-control" placeholder="first name" name="child-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="child-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="child-lname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="father-name">Father Name:</label>
+                            <div class="input-group" id="father-name">
+                                <input type="text" class="form-control" placeholder="first name" name="dad-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="dad-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="dad-lname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mother-name">Mother Name:</label>
+                            <div class="input-group" id="mother-name">
+                                <input type="text" class="form-control" placeholder="first name" name="mom-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="mom-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="mom-lname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthplace">Child birthplace</label>
+                            <input type="text" id="birthplace"class="form-control" name="child-birthplace">
+                        </div>
+                        <div class="form-group">
+                            <label for="child-bday">Child Birthdate:</label>
+                            <input type="date" class="form-control" id="child-bday" name="child-bday">
                         </div>
                         <div class="form-group">
                             <label for="reservation-date-selector">Reservation Date:</label>
