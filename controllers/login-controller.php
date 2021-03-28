@@ -9,7 +9,8 @@
 <body>
 <?php
 session_start();
-
+$failemail = 0;
+$failpass = 0;
 require("../custom-php/connector.php");
 
 // vardumps for checking shit
@@ -44,15 +45,15 @@ if ($stmt = $connection->prepare('SELECT userID, userPass FROM users WHERE email
          $_SESSION['name'] = $_POST['email'];
          $_SESSION['userID'] = $userID;
          header('Location: ../parishioner-view/parishioner-home.php');
-      } else {
-         // Incorrect password
-         echo 'Incorrect password!';
       }
-   } else {
-      // Incorrect username
-      echo 'Incorrect username!';
+      else{
+         // Incorrect password
+         //echo 'Incorrect username!';
+         header('Location: ../loginpage.php?fail=2');
+      }
+   } else{
+      header('Location: ../loginpage.php?fail=1');
    }
-
 
 	$stmt->close();
 }

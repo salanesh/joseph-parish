@@ -12,6 +12,23 @@
 <script type="text/javascript" src="custom-js/validation-functions.js"></script>
     <?php
    require('shared-html/navbar.html');
+    switch($_GET["fail"]){
+        case 1:
+        echo("<script>");
+        echo("alert('wrong email')");
+        echo("</script>");
+        break;
+        case 2:
+        echo("<script>");
+        echo("alert('wrong password')");
+        echo("</script>");
+        break;
+        case 3:
+        echo("<script>");
+        echo("alert('both wrong')");
+        echo("</script>");
+        break;
+    }
    ?>
     <div class="general-content">
         <div class="card mx-auto my-5 special-card" style="width: 30rem">
