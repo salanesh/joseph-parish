@@ -11,9 +11,10 @@
 <body>
     <?php
     require("../shared-html/parishionernav.html");
+    echo 'Welcome ' . $_SESSION['name'] . '!';
     ?>
     <div class="container-fluid staff-content">
-
+    
     
     	
 
