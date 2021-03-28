@@ -9,14 +9,15 @@
 <body>
 <?php
 session_start();
-
+$failemail = 0;
+$failpass = 0;
 require("../custom-php/connector.php");
 
 // vardumps for checking shit
-var_dump($_POST["email"]);
-echo("<br>");
-var_dump($_POST["userPass"]);
-echo("<br>");
+//var_dump($_POST["email"]);
+//echo("<br>");
+//var_dump($_POST["userPass"]);
+//echo("<br>");
 
 if ( !isset($_POST['email'], $_POST['userPass']) ) {
 	// Could not get the data that should have been sent.
@@ -43,16 +44,16 @@ if ($stmt = $connection->prepare('SELECT userID, userPass FROM users WHERE email
          $_SESSION['loggedin'] = TRUE;
          $_SESSION['name'] = $_POST['email'];
          $_SESSION['userID'] = $userID;
-         echo 'Welcome ' . $_SESSION['name'] . '!';
-      } else {
-         // Incorrect password
-         echo 'Incorrect password!';
+         header('Location: ../parishioner-view/parishioner-home.php');
       }
-   } else {
-      // Incorrect username
-      echo 'Incorrect username!';
+      else{
+         // Incorrect password
+         //echo 'Incorrect username!';
+         header('Location: ../loginpage.php?fail=2');
+      }
+   } else{
+      header('Location: ../loginpage.php?fail=1');
    }
-
 
 	$stmt->close();
 }
