@@ -9,6 +9,8 @@ CREATE TABLE Events(
     eventImage varchar(50),
     eventStatus boolean,
     donationGoal float,
+    eventStartTime time,
+    eventEndTime time,
     PRIMARY KEY(eventID)
 );
 CREATE TABLE Categories(
