@@ -25,10 +25,9 @@
     function addDonation(){
         require("../custom-php/connector.php");
         $roleSelected = 1;
-        $donationID = $_POST["donID"];
-        $userID = $_POST["userid"];
-        $catID = $_POST["catid"];
-        $eventID = $_POST["eventid"];
+        $userID = $_POST["userID"];
+        $catID = $_POST["catID"];
+        $eventID = $_POST["eventID"];
         $donationamount = $_POST["donAmount"];
         $donationdate = $_POST["donDate"];
         $donationtype = $_POST["donType"];
@@ -36,7 +35,7 @@
 
 
        //statements now//
-        $statement = $connection->prepare("INSERT INTO donations(donationID,userID,catID,eventID,donationAmount,donationDate,donationType) values(?,?,?,?,?,?,?)");
+        $statement = $connection->prepare("INSERT INTO donations(userID,catID,eventID,donationAmount,donationDate,donationType) values(?,?,?,?,?,?,?)");
         $statement->bind_param("iiiiiiis",$roleSelected,$donationID,$userID,$catID,$eventID,$donationamount,$donationdate,$donationtype);
         $statement->execute();
         // echo('the shit has been added');
@@ -99,9 +98,9 @@
           $stmt->close();
           $connection->close();
           $succText="Successfully updated the donation data";
-    }
-
-    function addDonationCategory(){
+    
+        }
+        function addDonationCategory(){
         require("../custom-php/connector.php");
         $roleSelected = 1;
         $catName = $_POST["catName"];
@@ -116,9 +115,9 @@
         $connection->close();
         $succText="Successfully Added the donation category";
     
-    
+        }
 
-    header("Location: ../staff-view/staff-donation.php?success=".$succText);
+    header("Location: ../staff-view/staff-donations.php?success=".$succText);
     ?>
 </body>
 </html>
