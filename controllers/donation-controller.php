@@ -30,18 +30,21 @@
         $eventID = $_POST["eventID"];
         $donationamount = $_POST["donAmount"];
         $donationdate = $_POST["donDate"];
-        $donationtype = $_POST["donType"];
-       
+       //var_dump($userID);
+       //var_dump($catID);
+       //var_dump($eventID);
+       //var_dump($donationamount);
+       //var_dump($donationdate);
 
 
-       //statements now//
-        $statement = $connection->prepare("INSERT INTO donations(userID,catID,eventID,donationAmount,donationDate,donationType) values(?,?,?,?,?,?,?)");
-        $statement->bind_param("iiiiiiis",$roleSelected,$donationID,$userID,$catID,$eventID,$donationamount,$donationdate,$donationtype);
-        $statement->execute();
-        // echo('the shit has been added');
-       $statement->close();
-        $connection->close();
-        $succText="Successfully Added the donation";
+        //statements now
+         $statement = $connection->prepare("INSERT INTO donations(userID,catID,eventID,donationAmount,donationDate) values(?,?,?,?,?)");
+         $statement->bind_param("iiiii",$userID,$catID,$eventID,$donationamount,$donationdate);
+         $statement->execute();
+         echo('the shit has been added');
+         $statement->close();
+         $connection->close();
+         $succText="Successfully Added the donation";
     }
 
     function editdonation(){
@@ -117,7 +120,7 @@
     
         }
 
-    header("Location: ../staff-view/staff-donations.php?success=".$succText);
+     header("Location: ../staff-view/staff-donations.php?success=".$succText);
     ?>
 </body>
 </html>
