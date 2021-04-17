@@ -57,84 +57,94 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="addReservationLabel">Reserve Marriage</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span> 
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
+                            <input type="hidden" value = "1" name="userID">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" value = "1" name="serviceID">
+                        </div>
+                        <div class="form-group">
                             <label for="groom-name">Groom Name:</label>
                             <div class="input-group" id="groom-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" name="g-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="g-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="g-lname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="groom-bday-selector">Groom's Birthday:</label>
-                            <input type="date" class="form-control" id="groom-bday-selector">
+                            <input type="date" class="form-control" id="groom-bday-selector" name="gbday">
                         </div>
                         <div class="form-group">
                             <label for="groom-father-name">Groom's Father's Name:</label>
                             <div class="input-group" id="groom-father-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" name="g-father-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="g-father-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="g-father-lname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="groom-mother-name">Groom's Mother's Name:</label>
                             <div class="input-group" id="groom-mother-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" name="g-mother-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="g-mother-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="g-mother-lname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="groom-address-input">Groom's Address</label>
-                            <textarea class="form-control" id="groom-address-input" rows="2"></textarea>
+                            <textarea class="form-control" id="groom-address-input" rows="2" name="groomAddress"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="bride-name">Bride Name:</label>
                             <div class="input-group" id="bride-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" name="b-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="b-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="b-lname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="bride-bday-selector">Bride's Birthday:</label>
-                            <input type="date" class="form-control" id="bride-bday-selector">
+                            <input type="date" class="form-control" id="bride-bday-selector" name="bbday">
                         </div>
                         <div class="form-group">
                             <label for="bride-father-name">Bride's Father's Name:</label>
                             <div class="input-group" id="bride-father-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" name="b-father-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="b-father-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="b-father-lname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="bride-mother-name">Bride's Mother's Name:</label>
                             <div class="input-group" id="bride-mother-name">
-                                <input type="text" class="form-control" placeholder="first name">
-                                <input type="text" class="form-control" placeholder="middle name">
-                                <input type="text" class="form-control" placeholder="last name">
+                                <input type="text" class="form-control" placeholder="first name" name="b-mother-fname">
+                                <input type="text" class="form-control" placeholder="middle name" name="b-mother-mname">
+                                <input type="text" class="form-control" placeholder="last name" name="b-mother-lname">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="bride-address-input">Bride's Address</label>
-                            <textarea class="form-control" id="bride-address-input" rows="2"></textarea>
+                            <textarea class="form-control" id="bride-address-input" rows="2" name="brideAddress"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="reservation-date-selector">Reservation Date:</label>
-                            <input type="date" class="form-control" id="reservation-date-selector">
+                            <label for="in-date-selector">Reservation Start Date:</label>
+                            <input type="date" class="form-control" id="in-date-selector" name="inDate">
                         </div>
                         <div class="form-group">
-                            <h2>Downpayment: 250<h2>
+                            <label for="out-date-selector">Reservation End Date:</label>
+                            <input type="date" class="form-control" id="out-date-selector" name="outDate">
+                        </div>
+                        <div class="form-group">
+                            <h2>Downpayment: 250000<h2>
                         </div>
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="addMarriage">Submit</button>
                          </div>
                     </form>
                 </div>
@@ -193,7 +203,7 @@
                             <h2>Downpayment: 250<h2>
                         </div>
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="addBaptism">Submit</button>
                          </div>
                     </form>
                 </div>
@@ -235,7 +245,7 @@
                                 <input type="text" class="form-control" placeholder="middle name" name="mom-mname">
                                 <input type="text" class="form-control" placeholder="last name" name="mom-lname">
                             </div>
-                        </div>
+                        </div>          
                         <div class="form-group">
                             <label for="birthplace">Child birthplace</label>
                             <input type="text" id="birthplace"class="form-control" name="child-birthplace">
@@ -252,7 +262,7 @@
                             <h2>Downpayment: 250<h2>
                         </div>
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary"name="addConfirm">Submit</button>
                          </div>
                     </form>
                 </div>

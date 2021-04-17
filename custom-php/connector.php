@@ -2,7 +2,7 @@
 $servername ="localhost";
 $database = "parishdata";
 $username = "root";
-$password = "";
+$password = "gtjudk1979";
 
 $connection = mysqli_connect($servername,$username,$password,$database);
 if($connection===false){
