@@ -10,10 +10,13 @@
 </head>
 <body>
     <?php
+    session_start();
+    require("../custom-php/connector.php");
     require("../shared-html/parishionernav.html");
+    echo 'Welcome ' . $_SESSION['name'] . '!';
     ?>
     <div class="container-fluid staff-content">
-
+    
     
     	
 

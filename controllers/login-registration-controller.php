@@ -21,21 +21,21 @@
     $parishionersStatus = 1;
 
     //use var_dump to check if the variables are holding the right data
-    // var_dump($empFname);
-    // echo("<br>");
-    // var_dump($empMname);
-    // echo("<br>");
-    // var_dump($empLname);
-    // echo("<br>");
-    // var_dump($empBday);
-    // echo("<br>");
-    // var_dump($roleSelected);
-    // echo("<br>");
-    // var_dump($empAddress);
-    // echo("<br>");
-    // var_dump($empEmail);
-    // echo("<br>");
-    // var_dump($empPassword);
+    //  var_dump($parishionersFname);
+    //  echo("<br>");
+    //  var_dump($parishionersMname);
+    //  echo("<br>");
+    //  var_dump($parishionersLname);
+    //  echo("<br>");
+    //  var_dump($parishionersBday);
+    //  echo("<br>");
+    //  var_dump($roleSelected);
+    //  echo("<br>");
+    //  var_dump($parishionersAddress);
+    //  echo("<br>");
+    //  var_dump($parishionersEmail);
+    //  echo("<br>");
+    //  var_dump($parishionersPassword);
 
     $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday) values(?,?,?,?,?,?,?,?,?)");
     $statement->bind_param("issssssis",$roleSelected,$parishionersFname,$parishionersLname,$parishionersMname,$parishionersAddress,$parishionersEmail,$parishionersPassword,$parishionersStatus,$parishionersBday);

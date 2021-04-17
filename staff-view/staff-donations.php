@@ -45,6 +45,7 @@
                     <th scope="col">Donation Amount</th>
                     <th scope="col">Donation Date</th>
                     <th scope="col">Donation Type</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,18 +68,18 @@
                        echo $row['eventID'];
                        echo "</td>";
                        echo "<td>";
-                       echo $row['donationamount'];
+                       echo $row['donationAmount'];
                        echo "</td>";
                        echo "<td>";
-                       echo $row['donationdate'];
+                       echo $row['donationDate'];
                        echo "</td>";
                        echo "<td>";
-                       echo $row['donationtype'];
+                       echo $row['donationType'];
                        echo "</td>";
                        echo "<td>";
-                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editParishionerModal'>Edit</button>";
+                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editDonationModal'>Edit</button>";
                        echo "&nbsp";
-                       echo "<a href='../controllers/parishioners-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
+                       echo "<a href='../controllers/donation-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
                        echo "</td>";
                        echo "</tr>";
                     }
@@ -105,13 +106,21 @@
                     <form action="../controllers/donation-controller.php" method="POST" name="DonationForm" onsubmit="return(staffValidator());">
                         <div class="form-group">
                             <label for="donators-name">Donated By:</label>
-                            <input type="name" class="form-control" id="donation-by-input" name="donatedby" >
                             <div class="input-group" id="userID">
-                                </div>
+                            <select class="form-control" id="service-selector" name="userID">
+                            <?php
+                                $sql="SELECT * FROM users";
+                                $results=mysqli_query($connection,$sql); 
+                                while($row = mysqli_fetch_assoc($results)) {
+                                    echo "<option value='$row[catID]'>".$row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName']."</option>";
+                                }
+                            ?>
+                            </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="service-selector">Donation Category: </label>
-                            <select class="form-control" id="service-selector" name="rolekey">
+                            <select class="form-control" id="service-selector" name="catID">
                             <?php
                                 $sql="SELECT * FROM categories";
                                 $results=mysqli_query($connection,$sql); 
@@ -123,7 +132,7 @@
                         </div>
                         <div class="form-group">
                             <label for="service-selector">Event Donation: </label>
-                            <select class="form-control" id="service-selector" name="rolekey">
+                            <select class="form-control" id="service-selector" name="eventID">
                             <?php
                                 $sql="SELECT * FROM  events";
                                 $results=mysqli_query($connection,$sql); 
@@ -135,14 +144,14 @@
                         </div>
                         <div class="form-group">
                             <label for="donation-amount-input">Donation Amount</label>
-                            <input type="number" class="form-control" id="donation-amount-input" name="donationamount" >
+                            <input type="number" class="form-control" id="donation-amount-input" name="donAmount" >
                         </div>   
                         <div class="form-group">
                             <label for="donation-date-input">Donation Date</label>
-                            <input type="date" id="donation-date-input" name="donationdate">
+                            <input type="date" id="donation-date-input" name="donDate">
                             <div class="form-group">
                             <label for="service-selector">Donation Type: </label>
-                            <select class="form-control" id="service-selector" name="rolekey">
+                            <select class="form-control" id="service-selector" name="donType">
                             <?php
                                 $sql="SELECT * FROM  donations";
                                 $results=mysqli_query($connection,$sql); 
@@ -153,7 +162,7 @@
                             </select>
                         </div>
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-primary" name="adddonation">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="addDonation">Submit</button>
                          </div>
                     </form>
                 </div>
