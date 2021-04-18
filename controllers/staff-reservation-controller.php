@@ -59,7 +59,7 @@
             try{
                 $mysqli->autocommit(false)//turns on transactions
                 $stmt1 = $mysqli->prepare("INSERT INTO reservations(serviceID,reserveInDate,reserveOutDate,reserveStatus)values(1,?,?,1);");
-                $stmt2 = $mysqli->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomAge,groomAddress,brideName,brideDadName,brideMomName,brideAge,brideAddress)
+                $stmt2 = $mysqli->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomBday,groomAddress,brideName,brideDadName,brideMomName,brideBday,brideAddress)
                 values(LAST_INSERT_ID(),1,?,?,?,?,?,?,?,?,?,?");
                 $stmt1->bind_param("ii",$inDate,$outDate);
                 $stmt2->bind_param("sssissssis",$gFullName,$gFatherFullName,$gMotherFullName);

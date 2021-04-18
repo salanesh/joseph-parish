@@ -1,5 +1,5 @@
 CREATE DATABASE parishdata;
-
+USE parishdata;
 CREATE TABLE Events(
     eventID int AUTO_INCREMENT,
     eventName varchar(20),
@@ -36,7 +36,7 @@ CREATE TABLE Users(
     email varchar(30),
     userName varchar(20),
     userPass varchar(20),
-    userStatus boolean,
+    userStatus tinyint,
     PRIMARY KEY(userID),
     FOREIGN KEY(roleID) references Roles(roleID)
 );
@@ -66,9 +66,9 @@ CREATE TABLE Reservations(
     reservationID int AUTO_INCREMENT,
     userID int,
     serviceID int,
-    reserveInDate date,
-    reserveOutDate date,
-    reserveStatus boolean,
+    reserveInDate datetime,
+    reserveOutDate datetime,
+    reserveStatus tinyint,
     PRIMARY KEY(reservationID),
     FOREIGN KEY(userID) references Users(userID),
     FOREIGN KEY(serviceID) references Church_Services(serviceID)
