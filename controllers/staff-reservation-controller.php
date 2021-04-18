@@ -24,31 +24,36 @@
             $inDate = $_POST["inDate"];
             $outDate = $_POST["outDate"];
             //groom info
-            $gFname = $_POST["g-fname"];
-            $gMname = $_POST["g-mname"];
-            $gLname = $_POST["g-lname"];
+            // $gFname = $_POST["g-fname"];
+            // $gMname = $_POST["g-mname"];
+            // $gLname = $_POST["g-lname"];
             $gbday = $_POST["gbday"];
-            $gFatherFname = $_POST["g-father-fname"];
-            $gFatherMname = $_POST["g-father-mname"];
-            $gFatherLname = $_POST["g-father-lname"];
-            $gMotherMname = $_POST["g-mother-mname"];
-            $gMotherFname = $_POST["g-mother-fname"];
-            $gMotherLname = $_POST["g-mother-lname"];
+            // $gFatherFname = $_POST["g-father-fname"];
+            // $gFatherMname = $_POST["g-father-mname"];
+            // $gFatherLname = $_POST["g-father-lname"];
+            // $gMotherMname = $_POST["g-mother-mname"];
+            // $gMotherFname = $_POST["g-mother-fname"];
+            // $gMotherLname = $_POST["g-mother-lname"];
             $groomAddress = $_POST["groomAddress"];
             //bride info
-            $bFname = $_POST["b-fname"];
-            $bMname = $_POST["b-mname"];
-            $bLname = $_POST["b-lname"];
+            // $bFname = $_POST["b-fname"];
+            // $bMname = $_POST["b-mname"];
+            // $bLname = $_POST["b-lname"];
             $bbday = $_POST["bbday"];
-            $bFatherFname = $_POST["b-father-fname"];
-            $bFatherMname = $_POST["b-father-mname"];
-            $bFatherLname = $_POST["b-father-lname"];
-            $bMotherMname = $_POST["b-mother-mname"];
-            $bMotherFname = $_POST["b-mother-fname"];
-            $bMotherLname = $_POST["b-mother-lname"];
+            // $bFatherFname = $_POST["b-father-fname"];
+            // $bFatherMname = $_POST["b-father-mname"];
+            // $bFatherLname = $_POST["b-father-lname"];
+            // $bMotherMname = $_POST["b-mother-mname"];
+            // $bMotherFname = $_POST["b-mother-fname"];
+            // $bMotherLname = $_POST["b-mother-lname"];
             $brideAddress = $_POST["brideAddress"];
-            //vardumps
-
+            //combined names
+            $gFullName = $_POST["g-fname"].$_POST["g-mname"].$_POST["g-lname"];
+            $gFatherFullName = $_POST["g-father-fname"].$_POST["g-father-mname"].$_POST["g-father-lname"];
+            $gMotherFullName = $_POST["g-mother-fname"].$_POST["g-mother-mname"].$_POST["g-mother-lname"];
+            $bFullName = $_POST["b-fname"].$_POST["b-mname"].$_POST["b-lname"];
+            $bFatherFullName = $_POST["b-father-fname"].$_POST["b-father-mname"].$_POST["b-father-lname"];
+            $bMotherFullName = $_POST["b-mother-fname"].$_POST["b-mother-mname"].$_POST["b-mother-lname"];
             //statements
 
             try{
@@ -57,7 +62,7 @@
                 $stmt2 = $mysqli->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomAge,groomAddress,brideName,brideDadName,brideMomName,brideAge,brideAddress)
                 values(LAST_INSERT_ID(),1,?,?,?,?,?,?,?,?,?,?");
                 $stmt1->bind_param("ii",$inDate,$outDate);
-                $stmt2->bind_param("sssissssis",);
+                $stmt2->bind_param("sssissssis",$gFullName,$gFatherFullName,$gMotherFullName);
                 $stmt1->execute();
                 $stmt2->execute();
                 $stmt1->close();
