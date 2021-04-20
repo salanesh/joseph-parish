@@ -44,7 +44,6 @@
                     <th scope="col">Event Donation</th>
                     <th scope="col">Donation Amount</th>
                     <th scope="col">Donation Date</th>
-                    <th scope="col">Donation Type</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -55,9 +54,6 @@
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
-                       echo "<th>";
-                       echo $row['donationID'];
-                       echo "</th>";
                        echo "<td>";
                        echo $row['userID'];
                        echo "</td>";
@@ -72,9 +68,6 @@
                        echo "</td>";
                        echo "<td>";
                        echo $row['donationDate'];
-                       echo "</td>";
-                       echo "<td>";
-                       echo $row['donationType'];
                        echo "</td>";
                        echo "<td>";
                        echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editDonationModal'>Edit</button>";
@@ -106,17 +99,17 @@
                     <form action="../controllers/donation-controller.php" method="POST" name="DonationForm" onsubmit="return(staffValidator());">
                         <div class="form-group">
                             <label for="donators-name">Donated By:</label>
-                            <div class="input-group" id="userID">
+                            
                             <select class="form-control" id="service-selector" name="userID">
                             <?php
                                 $sql="SELECT * FROM users";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
-                                    echo "<option value='$row[catID]'>".$row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName']."</option>";
+                                    echo "<option value='$row[userID]'>".$row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName']."</option>";
                                 }
                             ?>
                             </select>
-                            </div>
+                            
                         </div>
                         <div class="form-group">
                             <label for="service-selector">Donation Category: </label>
@@ -149,17 +142,6 @@
                         <div class="form-group">
                             <label for="donation-date-input">Donation Date</label>
                             <input type="date" id="donation-date-input" name="donDate">
-                            <div class="form-group">
-                            <label for="service-selector">Donation Type: </label>
-                            <select class="form-control" id="service-selector" name="donType">
-                            <?php
-                                $sql="SELECT * FROM  donations";
-                                $results=mysqli_query($connection,$sql); 
-                                while($row = mysqli_fetch_assoc($results)) {
-                                    echo "<option value='$row[donationID]'>".$row["donationType"]."</option>";
-                                }
-                            ?>
-                            </select>
                         </div>
                         <div class="container text-center">
                             <button type="submit" class="btn btn-primary" name="addDonation">Submit</button>
@@ -187,9 +169,16 @@
                             <input type="hidden" name="passedID" id="passedID">
                         </div>
                         <div class="form-group">
-                            <label for="donators-name">Donated By:</label>
-                            <div class="input-group" id="userID">
-                                </div>
+                            <label for="service-selector">Donated By: </label>
+                            <select class="form-control" id="service-selector" name="rolekey">
+                            <?php
+                                $sql="SELECT * FROM users";
+                                $results=mysqli_query($connection,$sql); 
+                                while($row = mysqli_fetch_assoc($results)) {
+                                    echo "<option value='$row[userID]'>".$row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName']."</option>";
+                                }
+                            ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="service-selector">Donation Category: </label>
@@ -222,18 +211,7 @@
                         <div class="form-group">
                             <label for="donation-date-input">Donation Date</label>
                             <input type="date" id="donation-date-input" name="donationdate">
-                            <div class="form-group">
-                            <label for="service-selector">Donation Type: </label>
-                            <select class="form-control" id="service-selector" name="rolekey">
-                            <?php
-                                $sql="SELECT * FROM  donations";
-                                $results=mysqli_query($connection,$sql); 
-                                while($row = mysqli_fetch_assoc($results)) {
-                                    echo "<option value='$row[donationID]'>".$row["donationType"]."</option>";
-                                }
-                            ?>
-                            </select>
-                        </div>
+
                         <div class="container text-center">
                             <button type="submit" class="btn btn-primary" name="editDonation">Submit</button>
                          </div>

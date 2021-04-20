@@ -15,7 +15,7 @@
    ?>
 
     <div class="general-content">
-        <h2 class="welcome-statement">St. Joseph Parish</h2>
+        <h2 class="welcome-statement">Julius ari na next time</h2>
             <div class="card mx-auto my-2 special-card" style="width: 48rem">
             <h5 class="card-header">Featured</h5>
                 <div class="card-body">
