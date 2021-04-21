@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,7 +61,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="../controllers/staff-reservation-controller.php" method="POST">
                         <div class="form-group">
                             <input type="hidden" value = "1" name="userID">
                         </div>
@@ -134,11 +134,11 @@
                         </div>
                         <div class="form-group">
                             <label for="in-date-selector">Reservation Start Date:</label>
-                            <input type="date" class="form-control" id="in-date-selector" name="inDate">
+                            <input type="datetime-local" class="form-control" id="in-date-selector" name="inDate">
                         </div>
                         <div class="form-group">
                             <label for="out-date-selector">Reservation End Date:</label>
-                            <input type="date" class="form-control" id="out-date-selector" name="outDate">
+                            <input type="datetime-local" class="form-control" id="out-date-selector" name="outDate">
                         </div>
                         <div class="form-group">
                             <h2>Downpayment: 250000<h2>
