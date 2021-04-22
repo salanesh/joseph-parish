@@ -33,7 +33,7 @@
         $empStatus = 1;
 
         //statements now//
-        $statement = $connection->prepare("INSERT INTO users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday) values(?,?,?,?,?,?,?,?,?)");
+        $statement = $connection->prepare("INSERT INTO Users(roleID,fName,lName,mName,userAddress,email,userPass,userStatus,userBday)values(?,?,?,?,?,?,?,?,?)");
         $statement->bind_param("issssssis",$roleSelected,$empFname,$empLname,$empMname,$empAddress,$empEmail,$empPassword,$empStatus,$empBday);
         $statement->execute();
         // echo('the shit has been added');
@@ -45,7 +45,7 @@
     function editEmployee(){
         require("../custom-php/connector.php");
          $param1="";
-         $sqlSelector = "UPDATE users set";
+         $sqlSelector = "UPDATE Users set";
          if(!empty($_POST["rolekey"])){
              $sqlSelector .=" roleID=?,";
              $param1 .="i";
@@ -105,7 +105,7 @@
 
     function deactivateEmployee(){
         require("../custom-php/connector.php");
-        $stmt = $connection->prepare("UPDATE users set userStatus=0 where userID=?");
+        $stmt = $connection->prepare("UPDATE Users set userStatus=0 where userID=?");
         $stmt->bind_param("i",$_GET["deactID"]);
         $stmt->execute();
         $stmt->close();
