@@ -19,6 +19,7 @@
         }
         function addMarriage(){
             require("../custom-php/connector.php");
+            $one = 1;
             $userID = $_POST["userID"];
             $serviceID = $_POST["serviceID"];
             $inDate = $_POST["inDate"];
@@ -54,25 +55,51 @@
             $bFullName = $_POST["b-fname"].$_POST["b-mname"].$_POST["b-lname"];
             $bFatherFullName = $_POST["b-father-fname"].$_POST["b-father-mname"].$_POST["b-father-lname"];
             $bMotherFullName = $_POST["b-mother-fname"].$_POST["b-mother-mname"].$_POST["b-mother-lname"];
+
+            //vardumps
+            var_dump($gFullName);
+            echo("<br>");
+            var_dump($bFullName);
+            echo("<br>");
+            var_dump($gFatherFullName);
+            echo("<br>");
+            var_dump($gMotherFullName);
+            echo("<br>");
+            var_dump($bFatherFullName);
+            echo("<br>");
+            var_dump($bMotherFullName);
+            echo("<br>");
+            var_dump($gbday);
+            echo("<br>");
+            var_dump($bbday);
+            echo("<br>");
+            var_dump($inDate);
+            echo("<br>");
+            var_dump($outDate);
+            echo("<br>");
             //statements
 
             try{
-                $mysqli->autocommit(false)//turns on transactions
-                $stmt1 = $mysqli->prepare("INSERT INTO reservations(serviceID,reserveInDate,reserveOutDate,reserveStatus)values(1,?,?,1);");
-                $stmt2 = $mysqli->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomBday,groomAddress,brideName,brideDadName,brideMomName,brideBday,brideAddress)
-                values(LAST_INSERT_ID(),1,?,?,?,?,?,?,?,?,?,?");
-                $stmt1->bind_param("ii",$inDate,$outDate);
-                $stmt2->bind_param("sssissssis",$gFullName,$gFatherFullName,$gMotherFullName);
+                $connection->autocommit(false);//turns on transactions
+                //need to add userID to reservations
+                $stmt1 = $connection->prepare("INSERT INTO reservations(serviceID,reserveInDate,reserveOutDate,reserveStatus)values(?,?,?,?);");
+                $stmt1->bind_param("issi",$one,$inDate,$outDate,$one);
                 $stmt1->execute();
-                $stmt2->execute();
                 $stmt1->close();
+                $reserveID = $connection->insert_id;
+                $stmt2 = $connection->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomBday,groomAddress,brideName,brideDadName,brideMomName,brideBday,brideAddress)
+                values(?,?,?,?,?,?,?,?,?,?,?,?);");
+                $stmt2->bind_param("iissssssssss",$reserveID,$serviceID,$gFullName,$gFatherFullName,$gMotherFullName,$gbday,$groomAddress,$bFullName,$bFatherFullName,$bMotherFullName,$bbday,$brideAddress);
+                $stmt2->execute();
                 $stmt2->close();
-                $mysqli->autocommit(true);//turns off transactions and commits queued queries
+                $connection->autocommit(true);//turns off transactions and commits queued queries
             }catch(Exception $e){
-                $mysqli->rollback();//remove all queries if error
+                $connection->rollback();//remove all queries if error
                 throw $e;
             }
-            header("Location: ../staff-view/staff-reservation.php");
+            var_dump($stmt2);
+            $connection->close();
+            //header("Location: ../staff-view/staff-reservation.php");
         }
         function addBaptism(){
             require("../custom-php/connector.php");
