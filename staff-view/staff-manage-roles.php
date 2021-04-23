@@ -33,7 +33,7 @@
             <tbody>
                   
                 <?php
-                    $sql="SELECT * from roles where roleID !=1";
+                    $sql="SELECT * from Roles where roleID !=1";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";

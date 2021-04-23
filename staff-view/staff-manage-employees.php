@@ -115,7 +115,7 @@
                             <label for="service-selector">Staff Position: </label>
                             <select class="form-control" id="service-selector" name="rolekey">
                             <?php
-                                $sql="SELECT * FROM roles";
+                                $sql="SELECT * FROM Roles";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[roleID]'>".$row["roleName"]."</option>";
@@ -175,7 +175,7 @@
                             <label for="service-selector">Staff Position: </label>
                             <select class="form-control" id="service-selector" name="rolekey">
                             <?php
-                                $sql="SELECT * FROM roles";
+                                $sql="SELECT * FROM Roles";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[roleID]'>".$row["roleName"]."</option>";
