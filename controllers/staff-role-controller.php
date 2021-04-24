@@ -23,7 +23,7 @@
             // var_dump($rolename);
             // echo "<br>";
             // var_dump($roledesc);
-            $statement = $connection->prepare("INSERT INTO roles(roleName,roleDesc) values(?,?)");
+            $statement = $connection->prepare("INSERT INTO Roles(roleName,roleDesc) values(?,?)");
             $statement->bind_param("ss",$rolename,$roledesc);
             $statement->execute();
             
@@ -34,7 +34,7 @@
         function editRole(){
             require("../custom-php/connector.php");
             $param1="";
-            $sqlSelector = "UPDATE roles set";
+            $sqlSelector = "UPDATE Roles set";
             if($_POST["roleNames"]){
                 $sqlSelector .= " roleName=?,";
                 $param1 .="s";
