@@ -19,7 +19,6 @@
         }
         function addMarriage(){
             require("../custom-php/connector.php");
-            $one = 1;
             $userID = $_POST["userID"];
             $serviceID = $_POST["serviceID"];
             $inDate = $_POST["inDate"];
@@ -99,11 +98,11 @@
             }
             var_dump($stmt2);
             $connection->close();
-            //header("Location: ../staff-view/staff-reservation.php");
+            header("Location: ../staff-view/staff-reservation.php");
         }
         function addBaptism(){
             require("../custom-php/connector.php");
-
+            
             
         }
         function addConfirmation(){
