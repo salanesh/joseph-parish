@@ -17,6 +17,7 @@ CREATE TABLE Categories(
     catID int AUTO_INCREMENT,
     catName varchar(20),
     catDesc text,
+    catStatus tinyint,
     PRIMARY KEY(catID)
 );
 CREATE TABLE Roles(
