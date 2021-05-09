@@ -34,7 +34,7 @@
 
 
         // statements now//
-        $statement = $connection->prepare("INSERT INTO categories(catName,catDesc,catStatus) values(?,?,?)");
+        $statement = $connection->prepare("INSERT INTO Categories(catName,catDesc,catStatus) values(?,?,?)");
         $statement->bind_param("ssi",$categoryname,$categorydescription,$catstatus);
         $statement->execute();
          echo('the shit has been added');
@@ -48,7 +48,7 @@
 
 
          $param1="";
-         $sqlSelector = "UPDATE categories set";
+         $sqlSelector = "UPDATE Categories set";
          
          if(!empty($_POST["catName"])){
              $sqlSelector .=" catName=?,";
@@ -80,7 +80,7 @@
     function deactivateDonationCategory(){
         require("../custom-php/connector.php");
         echo("ni sud siya");
-        $stmt = $connection->prepare("UPDATE categories set catStatus=0 where catID=?");
+        $stmt = $connection->prepare("UPDATE Categories set catStatus=0 where catID=?");
         $stmt->bind_param("i",$_GET["deactID"]);
         $stmt->execute();
         $stmt->close();

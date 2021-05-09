@@ -33,7 +33,7 @@
         $donationGoal = $_POST["donationGoal"];
     
     
-    $statement = $connection->prepare("INSERT INTO events(eventName,eventDesc,eventStartDate,eventStartTime,eventEndDate,eventEndTime,eventImage,eventStatus,donationGoal) values(?,?,?,?,?,?,?,?,?)");
+    $statement = $connection->prepare("INSERT INTO Events(eventName,eventDesc,eventStartDate,eventStartTime,eventEndDate,eventEndTime,eventImage,eventStatus,donationGoal) values(?,?,?,?,?,?,?,?,?)");
     $statement->bind_param("sssisisii",$eventName,$eventDesc,$eventStartDate,$eventStartTime,$eventEndDate,$eventEndTime,$eventImage,$eventStatus,$donationGoal);
     $statement->execute();
     
@@ -67,7 +67,7 @@
         //   echo("<br>");
         //   var_dump($_POST["passedID"]);
          $param1="";
-         $sqlSelector = "UPDATE events set";
+         $sqlSelector = "UPDATE Events set";
          if(!empty($_POST["eventname"])){
              $sqlSelector .=" eventName=?,";
              $param1 .="s";
@@ -135,7 +135,7 @@
 
     function deactivateEvent(){
         require("../custom-php/connector.php");
-        $stmt = $connection->prepare("UPDATE events set eventStatus=0 where eventID=?");
+        $stmt = $connection->prepare("UPDATE Events set eventStatus=0 where eventID=?");
         $stmt->bind_param("i",$_GET["deactID"]);
         $stmt->execute();
         $stmt->close();

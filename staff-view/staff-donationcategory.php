@@ -50,7 +50,7 @@
             <tbody>
                   
                 <?php
-                    $sql="SELECT * from categories where catStatus!=0";
+                    $sql="SELECT * from Categories where catStatus!=0";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";

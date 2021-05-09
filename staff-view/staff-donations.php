@@ -50,7 +50,7 @@
             <tbody>
                   
                 <?php
-                    $sql="SELECT * from donations";
+                    $sql="SELECT * from Donations";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
@@ -102,7 +102,7 @@
                             
                             <select class="form-control" id="service-selector" name="userID">
                             <?php
-                                $sql="SELECT * FROM users";
+                                $sql="SELECT * FROM Users";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[userID]'>".$row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName']."</option>";
@@ -115,7 +115,7 @@
                             <label for="service-selector">Donation Category: </label>
                             <select class="form-control" id="service-selector" name="catID">
                             <?php
-                                $sql="SELECT * FROM categories";
+                                $sql="SELECT * FROM Categories";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[catID]'>".$row["catName"]."</option>";
@@ -127,7 +127,7 @@
                             <label for="service-selector">Event Donation: </label>
                             <select class="form-control" id="service-selector" name="eventID">
                             <?php
-                                $sql="SELECT * FROM  events";
+                                $sql="SELECT * FROM  Events";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[eventID]'>".$row["eventName"]."</option>";
@@ -172,7 +172,7 @@
                             <label for="service-selector">Donated By: </label>
                             <select class="form-control" id="service-selector" name="rolekey">
                             <?php
-                                $sql="SELECT * FROM users";
+                                $sql="SELECT * FROM Users";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[userID]'>".$row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName']."</option>";
@@ -184,7 +184,7 @@
                             <label for="service-selector">Donation Category: </label>
                             <select class="form-control" id="service-selector" name="rolekey">
                             <?php
-                                $sql="SELECT * FROM categories";
+                                $sql="SELECT * FROM Categories";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[catID]'>".$row["catName"]."</option>";
@@ -196,7 +196,7 @@
                             <label for="service-selector">Event Donation: </label>
                             <select class="form-control" id="service-selector" name="rolekey">
                             <?php
-                                $sql="SELECT * FROM  events";
+                                $sql="SELECT * FROM  Events";
                                 $results=mysqli_query($connection,$sql); 
                                 while($row = mysqli_fetch_assoc($results)) {
                                     echo "<option value='$row[eventID]'>".$row["eventName"]."</option>";
