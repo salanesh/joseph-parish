@@ -38,7 +38,7 @@
 
 
         //statements now
-         $statement = $connection->prepare("INSERT INTO donations(userID,catID,eventID,donationAmount,donationDate) values(?,?,?,?,?)");
+         $statement = $connection->prepare("INSERT INTO Donations(userID,catID,eventID,donationAmount,donationDate) values(?,?,?,?,?)");
          $statement->bind_param("iiiii",$userID,$catID,$eventID,$donationamount,$donationdate);
          $statement->execute();
          echo('the shit has been added');
@@ -110,7 +110,7 @@
         $catDesc = $_POST["catDesc"];
         
        //statements now//
-        $statement = $connection->prepare("INSERT INTO categories(catName,catDesc) values(?,?)");
+        $statement = $connection->prepare("INSERT INTO Categories(catName,catDesc) values(?,?)");
         $statement->bind_param("sss",$roleSelected,$catName,$catDesc);
         $statement->execute();
         // echo('the shit has been added');

@@ -19,6 +19,8 @@
         }
         function addMarriage(){
             require("../custom-php/connector.php");
+            echo("<h1>Marriage Function</h1>");
+            echo("<br>");
             $one = 1;
             $userID = $_POST["userID"];
             $serviceID = $_POST["serviceID"];
@@ -77,13 +79,14 @@
             echo("<br>");
             var_dump($outDate);
             echo("<br>");
-            //statements
+            var_dump($userID);
 
+            //statements
+            //still need to get the actual userID logged in instead of a placeholder id of 1
             try{
                 $connection->autocommit(false);//turns on transactions
-                //need to add userID to reservations
-                $stmt1 = $connection->prepare("INSERT INTO reservations(serviceID,reserveInDate,reserveOutDate,reserveStatus)values(?,?,?,?);");
-                $stmt1->bind_param("issi",$one,$inDate,$outDate,$one);
+                $stmt1 = $connection->prepare("INSERT INTO Reservations(userID,serviceID,reserveInDate,reserveOutDate,reserveStatus)values(?,?,?,?,?);");
+                $stmt1->bind_param("iissi",$userID,$serviceID,$inDate,$outDate,$one);
                 $stmt1->execute();
                 $stmt1->close();
                 $reserveID = $connection->insert_id;
@@ -97,20 +100,134 @@
                 $connection->rollback();//remove all queries if error
                 throw $e;
             }
-            var_dump($stmt2);
+            
             $connection->close();
             //header("Location: ../staff-view/staff-reservation.php");
         }
         function addBaptism(){
             require("../custom-php/connector.php");
-
-            
+            echo("<h1>Baptism Function</h1>");
+            echo("<br>");
+            //catchers
+            $one = 1;
+            $userID = $_POST["userID"];
+            $serviceID = $_POST["serviceID"];
+            $childFname = $_POST["child-fname"];
+            $childMname = $_POST["child-mname"];
+            $childLname = $_POST["child-lname"];
+            $fatherName = $_POST["father-name"];
+            $motherName = $_POST["mother-name"];
+            $birthPlace = $_POST["child-birthplace"];
+            $bday = $_POST["child-bday"];
+            $inDate = $_POST["inDate"];
+            $outDate = $_POST["outDate"];
+            //var dump checks
+            var_dump($userID);
+            echo("<br>");
+            var_dump($serviceID);
+            echo("<br>");
+            var_dump($childFname);
+            echo("<br>");
+            var_dump($childMname);
+            echo("<br>");
+            var_dump($childLname);
+            echo("<br>");
+            var_dump($fatherName);
+            echo("<br>");
+            var_dump($motherName);
+            echo("<br>");
+            var_dump($birthPlace);
+            echo("<br>");
+            var_dump($bday);
+            echo("<br>");
+            var_dump($inDate);
+            echo("<br>");
+            var_dump($outDate);
+            echo("<br>");
+            //insert statements
+            try{
+                $connection->autocommit(false);//turns on transactions
+                $stmt1 = $connection->prepare("INSERT INTO Reservations(userID,serviceID,reserveInDate,reserveOutDate,reserveStatus)values(?,?,?,?,?);");
+                $stmt1->bind_param("iissi",$userID,$serviceID,$inDate,$outDate,$one);
+                $stmt1->execute();
+                $stmt1->close();
+                $reserveID = $connection->insert_id;
+                $stmt2 = $connection->prepare("INSERT INTO Baptism(reservationID,serviceID,childFname,childMname,childLname,momName,dadName,birthplace,birthdate)
+                values(?,?,?,?,?,?,?,?,?);");
+                $stmt2->bind_param("iisssssss",$reserveID,$serviceID,$childFname,$childMname,$childLname,$fatherName,$motherName,$birthPlace,$bday);
+                $stmt2->execute();
+                $stmt2->close();
+                $connection->autocommit(true);//turns off transactions and commits queued queries
+            }catch(Exception $e){
+                $connection->rollback();//remove all queries if error
+                throw $e;
+            }
+            $connection->close();
+            //header("Location: ../staff-view/staff-reservation.php");
         }
         function addConfirmation(){
             require("../custom-php/connector.php");
+            echo("<h1>Confirmation Function</h1>");
+            echo("<br>");
+            $one = 1;
+            $userID = $_POST["userID"];
+            $serviceID = $_POST["serviceID"];
+            $childFname = $_POST["child-fname"];
+            $childMname = $_POST["child-mname"];
+            $childLname = $_POST["child-lname"];
+            $fatherName = $_POST["father-name"];
+            $motherName = $_POST["mother-name"];
+            $birthPlace = $_POST["child-birthplace"];
+            $baptismDate = $_POST["baptism-date"];
+            $bday = $_POST["child-bday"];
+            $inDate = $_POST["inDate"];
+            $outDate = $_POST["outDate"];
+            //var dump variable checks
+            var_dump($userID);
+            echo("<br>");
+            var_dump($serviceID);
+            echo("<br>");
+            var_dump($childFname);
+            echo("<br>");
+            var_dump($childMname);
+            echo("<br>");
+            var_dump($childLname);
+            echo("<br>");
+            var_dump($fatherName);
+            echo("<br>");
+            var_dump($motherName);
+            echo("<br>");
+            var_dump($birthPlace);
+            echo("<br>");
+            var_dump($bday);
+            echo("<br>");
+            var_dump($inDate);
+            echo("<br>");
+            var_dump($outDate);
+            echo("<br>");
+            var_dump($baptismDate);
+            echo("<br>");
 
-
-            
+            //insert statements
+            try{
+                $connection->autocommit(false);//turns on transactions
+                $stmt1 = $connection->prepare("INSERT INTO Reservations(userID,serviceID,reserveInDate,reserveOutDate,reserveStatus)values(?,?,?,?,?);");
+                $stmt1->bind_param("iissi",$userID,$serviceID,$inDate,$outDate,$one);
+                $stmt1->execute();
+                $stmt1->close();
+                $reserveID = $connection->insert_id;
+                $stmt2 = $connection->prepare("INSERT INTO confirmation(reservationID,serviceID,confirmFname,confirmMname,confirmLname,momName,dadName,birthplace,birthdate,baptismdate)
+                values(?,?,?,?,?,?,?,?,?,?);");
+                $stmt2->bind_param("iissssssss",$reserveID,$serviceID,$childFname,$childMname,$childLname,$fatherName,$motherName,$birthPlace,$bday,$baptismDate);
+                $stmt2->execute();
+                $stmt2->close();
+                $connection->autocommit(true);//turns off transactions and commits queued queries
+            }catch(Exception $e){
+                $connection->rollback();//remove all queries if error
+                throw $e;
+            }
+            $connection->close();
+            //header("Location: ../staff-view/staff-reservation.php");
         }
     ?>
 </body>

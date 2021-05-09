@@ -48,7 +48,7 @@
         // var_dump($parishionersPassword);
         // echo "<br>";
         //statements now//
-        $statement = $connection->prepare("INSERT INTO users(roleID,fName,mName,lName,userBday,userAddress,email,userPass,userStatus) values(?,?,?,?,?,?,?,?,?)");
+        $statement = $connection->prepare("INSERT INTO Users(roleID,fName,mName,lName,userBday,userAddress,email,userPass,userStatus) values(?,?,?,?,?,?,?,?,?)");
         $statement->bind_param("isssssssi",$roleSelected,$parishionersFname,$parishionersLname,$parishionersMname,$parishionersBday,$parishionersAddress,$parishionersEmail,$parishionersPassword,$parishionersStatus);
         $statement->execute();
         // echo('the shit has been added');
@@ -61,7 +61,7 @@
         require("../custom-php/connector.php");
         
          $param1="";
-         $sqlSelector = "UPDATE users set";
+         $sqlSelector = "UPDATE Users set";
          if(!empty($_POST["rolekey"])){
              $sqlSelector .=" roleID=?,";
              $param1 .="i";
@@ -133,7 +133,7 @@
 
     function deactivateparishioners(){
         require("../custom-php/connector.php");
-        $stmt = $connection->prepare("UPDATE users set userStatus=0 where userID=?");
+        $stmt = $connection->prepare("UPDATE Users set userStatus=0 where userID=?");
         $stmt->bind_param("i",$_GET["deactID"]);
         $stmt->execute();
         $stmt->close();

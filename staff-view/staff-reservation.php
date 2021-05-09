@@ -63,6 +63,7 @@
                 <div class="modal-body">
                     <form action="../controllers/staff-reservation-controller.php" method="POST">
                         <div class="form-group">
+                        <!-- need to make user id value from static to dynamic -->
                             <input type="hidden" value = "1" name="userID">
                         </div>
                         <div class="form-group">
@@ -162,7 +163,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="../controllers/staff-reservation-controller.php" method="POST">
+                    <div class="form-group">
+                        <!-- need to make user id value from static to dynamic -->
+                            <input type="hidden" value = "1" name="userID">
+                    </div>
+                    <div class="form-group">
+                            <input type="hidden" value = "3" name="serviceID">
+                    </div>
                         <div class="form-group">
                             <label for="child-name">Child Name:</label>
                             <div class="input-group" id="child-name">
@@ -173,19 +181,11 @@
                         </div>
                         <div class="form-group">
                             <label for="father-name">Father Name:</label>
-                            <div class="input-group" id="father-name">
-                                <input type="text" class="form-control" placeholder="first name" name="dad-fname">
-                                <input type="text" class="form-control" placeholder="middle name" name="dad-mname">
-                                <input type="text" class="form-control" placeholder="last name" name="dad-lname">
-                            </div>
+                            <input type="text" id="father-name" name="father-name" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="mother-name">Mother Name:</label>
-                            <div class="input-group" id="mother-name">
-                                <input type="text" class="form-control" placeholder="first name" name="mom-fname">
-                                <input type="text" class="form-control" placeholder="middle name" name="mom-mname">
-                                <input type="text" class="form-control" placeholder="last name" name="mom-lname">
-                            </div>
+                            <input type="text" id="mother-name" name="mother-name" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="birthplace">Child birthplace</label>
@@ -196,9 +196,15 @@
                             <input type="date" class="form-control" id="child-bday" name="child-bday">
                         </div>
                         <div class="form-group">
-                            <label for="reservation-date-selector">Reservation Date:</label>
-                            <input type="date" class="form-control" id="reservation-date-selector">
+                            <label for="bapstism-in-date">Reservation Start:</label>
+                            <input type="datetime-local" class="form-control" id="baptism-in-date" name="inDate">
                         </div>
+                        <div class="form-group">
+                            <label for="bapstism-end-date">Reservation End:</label>
+                            <input type="datetime-local" class="form-control" id="baptism-end-date" name="outDate">
+                        </div>
+
+
                         <div class="form-group">
                             <h2>Downpayment: 250<h2>
                         </div>
@@ -221,7 +227,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="../controllers/staff-reservation-controller.php" method="POST">
+                    <div class="form-group">
+                        <!-- need to make user id value from static to dynamic -->
+                            <input type="hidden" value = "1" name="userID">
+                    </div>
+                    <div class="form-group">
+                            <input type="hidden" value = "2" name="serviceID">
+                    </div>
                     <div class="form-group">
                             <label for="child-name">Child Name:</label>
                             <div class="input-group" id="child-name">
@@ -232,19 +245,11 @@
                         </div>
                         <div class="form-group">
                             <label for="father-name">Father Name:</label>
-                            <div class="input-group" id="father-name">
-                                <input type="text" class="form-control" placeholder="first name" name="dad-fname">
-                                <input type="text" class="form-control" placeholder="middle name" name="dad-mname">
-                                <input type="text" class="form-control" placeholder="last name" name="dad-lname">
-                            </div>
+                            <input type="text" class="form-control" placeholder="Father Name" id="father-name" name="father-name">
                         </div>
                         <div class="form-group">
                             <label for="mother-name">Mother Name:</label>
-                            <div class="input-group" id="mother-name">
-                                <input type="text" class="form-control" placeholder="first name" name="mom-fname">
-                                <input type="text" class="form-control" placeholder="middle name" name="mom-mname">
-                                <input type="text" class="form-control" placeholder="last name" name="mom-lname">
-                            </div>
+                            <input type="text" class="form-control" placeholder="Mother Name" id="mother-name" name="mother-name">
                         </div>          
                         <div class="form-group">
                             <label for="birthplace">Child birthplace</label>
@@ -255,8 +260,16 @@
                             <input type="date" class="form-control" id="child-bday" name="child-bday">
                         </div>
                         <div class="form-group">
-                            <label for="reservation-date-selector">Reservation Date:</label>
-                            <input type="date" class="form-control" id="reservation-date-selector">
+                            <label for="baptism-date">Baptism Date:</label>
+                            <input type="date" class="form-control" id="baptism-date" name="baptism-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmation-in-date">Reservation Start:</label>
+                            <input type="datetime-local" class="form-control" id="confirmation-in-date" name="inDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmation-end-date">Reservation End:</label>
+                            <input type="datetime-local" class="form-control" id="confirmation-end-date" name="outDate">
                         </div>
                         <div class="form-group">
                             <h2>Downpayment: 250<h2>
