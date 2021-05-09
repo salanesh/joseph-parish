@@ -41,7 +41,7 @@
 	                <!-- put back end shit here -->
                     <?php
                     require ("../custom-php/connector.php");
-                    $sql="SELECT * from events" ;
+                    $sql="SELECT * from Events" ;
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
