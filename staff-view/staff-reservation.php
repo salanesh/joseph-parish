@@ -37,17 +37,80 @@
                     <th scope="col">Reservation ID</th>
                     <th scope="col">Requirement Details</th>
                     <th scope="col">Time Details</th>
-                    <th scope="col">Reservation Type</th>
+                    <!-- <th scope="col">Reservation Type</th> -->
                     <th scope="col">Church Service</th>
                     <th scope="col">Reserved by</th>
                 </tr>
             </thead>
             <tbody>
-                    
+                    <?php
+                        $sql="SELECT r.reservationID, r.serviceID, r.reserveInDate,r.reserveOutDate,r.reserveStatus, u.fName,u.mName,u.lName,s.serviceName FROM reservations r, users u, church_services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
+                        $result=mysqli_query($connection,$sql);
+                        while($row=mysqli_fetch_assoc($result)){
+                            echo("<tr>");
+                            echo("<th>");
+                            echo $row['reservationID'];
+                            echo("</th>");
+                            echo("<td>");
+                            echo("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['serviceID']." data-target='#requirementsModal'>Requirements</button>");
+                            echo("</td>");
+                            echo("<td>");
+                            echo("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['reservationID']." data-target='#timeDetailModal'>Time</button>");
+                            echo("</td>");
+                            echo("<td>");
+                            echo $row['serviceName'];
+                            echo("</td>");
+                            echo("<td>");
+                            echo $row['fName']."&nbsp".$row['mName']."&nbsp".$row['lName'];
+                            echo("</td>");
+                            echo("</tr>");
+                        }
+                    ?>           
+                
             </tbody>
         </table>
     </div>
 
+    </div>
+    <!-- reservation requirements modal -->
+    <div class="modal fade" id="requirementsModal" tabindex="-1" aria-labelledby="requirementsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="requirementsModalLabel">Requirements For Reservation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>                                          
+        </div>
+    </div>
+    <!-- time details modal -->
+    <div class="modal fade" id="timeDetailModal" tabindex="-1" aria-labelledby="timeDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="timeDetailModalLabel">Time Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>                                          
+        </div>
     </div>
     
     <!-- marriage modal -->
