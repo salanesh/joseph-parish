@@ -25,7 +25,7 @@ if ( !isset($_POST['email'], $_POST['userPass']) ) {
 }
 
 // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
-if ($stmt = $connection->prepare('SELECT userID, userPass FROM users WHERE email = ?')) {
+if ($stmt = $connection->prepare('SELECT userID, userPass, roleID FROM users WHERE email = ?')) {
 	// Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
 	$stmt->bind_param('s', $_POST['email']);
 	$stmt->execute();
@@ -33,7 +33,7 @@ if ($stmt = $connection->prepare('SELECT userID, userPass FROM users WHERE email
 	$stmt->store_result();
 
    if ($stmt->num_rows > 0) {
-      $stmt->bind_result($userID, $userPass);
+      $stmt->bind_result($userID, $userPass, $roleID);
       $stmt->fetch();
       // Account exists, now we verify the password.
       // Note: remember to use password_hash in your registration file to store the hashed passwords.
@@ -44,7 +44,12 @@ if ($stmt = $connection->prepare('SELECT userID, userPass FROM users WHERE email
          $_SESSION['loggedin'] = TRUE;
          $_SESSION['name'] = $_POST['email'];
          $_SESSION['userID'] = $userID;
-         header('Location: ../parishioner-view/parishioner-home.php');
+         if($roleID==1){
+            header('Location: ../parishioner-view/parishioner-home.php');
+         }else{
+            header('Location: ../staff-view/staff-home.php');
+         }
+         
       }
       else{
          // Incorrect password
