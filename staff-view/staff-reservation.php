@@ -84,6 +84,7 @@
         </div>
         <div class="modal-body">
             ...
+            <!-- put the shit in here -->
         </div>
         <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -104,6 +105,7 @@
         </div>
         <div class="modal-body">
             ...
+            <!-- put more shit in here -->
         </div>
         <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

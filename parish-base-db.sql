@@ -87,6 +87,10 @@ CREATE TABLE Marriage(
     brideMomName varchar(20),
     brideBday date,
     brideAddress text,
+    cenomar tinyint,
+    seminarCert tinyint,
+    confession tinyint,
+    civilRegistration tinyint,
     PRIMARY KEY(serviceID),
     FOREIGN KEY(serviceID) references Church_Services(serviceID),
     FOREIGN KEY(reservationID) references Reservations(reservationID)
@@ -102,6 +106,9 @@ CREATE TABLE confirmation(
     birthplace varchar(50),
     birthdate date,
     baptismdate date,
+    baptismCert tinyint,
+    sponsorOne tinyint,
+    sponsorTwo tinyint,
     PRIMARY KEY(serviceID),
     FOREIGN KEY(serviceID) references Church_Services(serviceID),
     FOREIGN KEY(reservationID) references Reservations(reservationID)
@@ -116,6 +123,7 @@ CREATE TABLE Baptism(
     dadName varchar(50),
     birthplace varchar(50),
     birthdate date,
+    sponsorList tinyint,
     PRIMARY KEY(serviceID), 
     FOREIGN KEY(serviceID) references Church_Services(serviceID),
     FOREIGN KEY(reservationID) references Reservations(reservationID)
@@ -125,6 +133,7 @@ CREATE TABLE Mass(
     serviceID int,
     details text,
     nameOfDead varchar(50),
+    deathCert tinyint,
     PRIMARY KEY(serviceID),
     FOREIGN KEY(serviceID) references Church_Services(serviceID),
     FOREIGN KEY(reservationID) references Reservations(reservationID)
