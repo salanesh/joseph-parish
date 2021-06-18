@@ -108,7 +108,7 @@
             <tbody>
             <?php
                     require("../custom-php/connector.php");
-                    $sql="SELECT * from users where userStatus !=0";
+                    $sql="SELECT * from Users where userStatus !=0";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
