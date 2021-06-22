@@ -57,29 +57,57 @@
             $bFullName = $_POST["b-fname"].$_POST["b-mname"].$_POST["b-lname"];
             $bFatherFullName = $_POST["b-father-fname"].$_POST["b-father-mname"].$_POST["b-father-lname"];
             $bMotherFullName = $_POST["b-mother-fname"].$_POST["b-mother-mname"].$_POST["b-mother-lname"];
+            if(isset($_POST["cenomar"])){
+                $cenomar = $_POST["cenomar"];
+            }else{
+                $cenomar = 0;
+            }
+            if(isset($_POST["seminarCert"])){
+                $seminarCert = $_POST["seminarCert"];
+            }else{
+                $seminarCert = 0;
+            }
+            if(isset($_POST["confession"])){
+                $confession = $_POST["confession"];
+            }else{
+                $confession = 0;
+            }
+            if(isset($_POST["civilRegistration"])){
+                $civilRegistration = $_POST["civilRegistration"];
+            }else{
+                $civilRegistration = 0;
+            }
 
             //vardumps
-            var_dump($gFullName);
-            echo("<br>");
-            var_dump($bFullName);
-            echo("<br>");
-            var_dump($gFatherFullName);
-            echo("<br>");
-            var_dump($gMotherFullName);
-            echo("<br>");
-            var_dump($bFatherFullName);
-            echo("<br>");
-            var_dump($bMotherFullName);
-            echo("<br>");
-            var_dump($gbday);
-            echo("<br>");
-            var_dump($bbday);
-            echo("<br>");
-            var_dump($inDate);
-            echo("<br>");
-            var_dump($outDate);
-            echo("<br>");
-            var_dump($userID);
+            // var_dump($cenomar);
+            // echo("<br>");
+            // var_dump($seminarCert);
+            // echo("<br>");
+            // var_dump($confession);
+            // echo("<br>");
+            // var_dump($civilRegistration);
+            // echo("<br>");
+            // var_dump($gFullName);
+            // echo("<br>");
+            // var_dump($bFullName);
+            // echo("<br>");
+            // var_dump($gFatherFullName);
+            // echo("<br>");
+            // var_dump($gMotherFullName);
+            // echo("<br>");
+            // var_dump($bFatherFullName);
+            // echo("<br>");
+            // var_dump($bMotherFullName);
+            // echo("<br>");
+            // var_dump($gbday);
+            // echo("<br>");
+            // var_dump($bbday);
+            // echo("<br>");
+            // var_dump($inDate);
+            // echo("<br>");
+            // var_dump($outDate);
+            // echo("<br>");
+            // var_dump($userID);
 
             //statements
             //still need to get the actual userID logged in instead of a placeholder id of 1
@@ -90,9 +118,9 @@
                 $stmt1->execute();
                 $stmt1->close();
                 $reserveID = $connection->insert_id;
-                $stmt2 = $connection->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomBday,groomAddress,brideName,brideDadName,brideMomName,brideBday,brideAddress)
-                values(?,?,?,?,?,?,?,?,?,?,?,?);");
-                $stmt2->bind_param("iissssssssss",$reserveID,$serviceID,$gFullName,$gFatherFullName,$gMotherFullName,$gbday,$groomAddress,$bFullName,$bFatherFullName,$bMotherFullName,$bbday,$brideAddress);
+                $stmt2 = $connection->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomBday,groomAddress,brideName,brideDadName,brideMomName,brideBday,brideAddress,cenomar,seminarCert,confession,civilRegistration)
+                values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+                $stmt2->bind_param("iissssssssssiiii",$reserveID,$serviceID,$gFullName,$gFatherFullName,$gMotherFullName,$gbday,$groomAddress,$bFullName,$bFatherFullName,$bMotherFullName,$bbday,$brideAddress,$cenomar,$seminarCert,$confession,$civilRegistration);
                 $stmt2->execute();
                 $stmt2->close();
                 $connection->autocommit(true);//turns off transactions and commits queued queries
@@ -102,7 +130,7 @@
             }
             
             $connection->close();
-            //header("Location: ../staff-view/staff-reservation.php");
+            header("Location: ../staff-view/staff-reservation.php");
         }
         function addBaptism(){
             require("../custom-php/connector.php");
@@ -121,29 +149,36 @@
             $bday = $_POST["child-bday"];
             $inDate = $_POST["inDate"];
             $outDate = $_POST["outDate"];
+            if(isset($_POST["sponsorList"])){
+                $sponsorList = $_POST["sponsorList"];
+            }else{
+                $sponsorList = 0;
+            }
             //var dump checks
-            var_dump($userID);
-            echo("<br>");
-            var_dump($serviceID);
-            echo("<br>");
-            var_dump($childFname);
-            echo("<br>");
-            var_dump($childMname);
-            echo("<br>");
-            var_dump($childLname);
-            echo("<br>");
-            var_dump($fatherName);
-            echo("<br>");
-            var_dump($motherName);
-            echo("<br>");
-            var_dump($birthPlace);
-            echo("<br>");
-            var_dump($bday);
-            echo("<br>");
-            var_dump($inDate);
-            echo("<br>");
-            var_dump($outDate);
-            echo("<br>");
+            // var_dump($sponsorList);
+            // echo("<br>");
+            // var_dump($userID);
+            // echo("<br>");
+            // var_dump($serviceID);
+            // echo("<br>");
+            // var_dump($childFname);
+            // echo("<br>");
+            // var_dump($childMname);
+            // echo("<br>");
+            // var_dump($childLname);
+            // echo("<br>");
+            // var_dump($fatherName);
+            // echo("<br>");
+            // var_dump($motherName);
+            // echo("<br>");
+            // var_dump($birthPlace);
+            // echo("<br>");
+            // var_dump($bday);
+            // echo("<br>");
+            // var_dump($inDate);
+            // echo("<br>");
+            // var_dump($outDate);
+            // echo("<br>");
             //insert statements
             try{
                 $connection->autocommit(false);//turns on transactions
@@ -152,9 +187,9 @@
                 $stmt1->execute();
                 $stmt1->close();
                 $reserveID = $connection->insert_id;
-                $stmt2 = $connection->prepare("INSERT INTO Baptism(reservationID,serviceID,childFname,childMname,childLname,momName,dadName,birthplace,birthdate)
+                $stmt2 = $connection->prepare("INSERT INTO Baptism(reservationID,serviceID,childFname,childMname,childLname,momName,dadName,birthplace,birthdate,sponsorList)
                 values(?,?,?,?,?,?,?,?,?);");
-                $stmt2->bind_param("iisssssss",$reserveID,$serviceID,$childFname,$childMname,$childLname,$fatherName,$motherName,$birthPlace,$bday);
+                $stmt2->bind_param("iisssssssi",$reserveID,$serviceID,$childFname,$childMname,$childLname,$fatherName,$motherName,$birthPlace,$bday,$sponsorList);
                 $stmt2->execute();
                 $stmt2->close();
                 $connection->autocommit(true);//turns off transactions and commits queued queries
@@ -182,31 +217,46 @@
             $bday = $_POST["child-bday"];
             $inDate = $_POST["inDate"];
             $outDate = $_POST["outDate"];
+            if(isset($_POST["baptismCert"])){
+                $baptismCert = $_POST["baptismCert"];
+            }else{
+                $baptismCert = 0;
+            }
+            if(isset($_POST["sponsorOne"])){
+                $sponsorOne = $_POST["sponsorOne"];
+            }else{
+                $sponsorOne = 0;
+            }
+            if(isset($_POST["sponsorTwo"])){
+                $sponsorTwo = $_POST["sponsorTwo"];
+            }else{
+                $sponsorTwo = 0;
+            }
             //var dump variable checks
-            var_dump($userID);
-            echo("<br>");
-            var_dump($serviceID);
-            echo("<br>");
-            var_dump($childFname);
-            echo("<br>");
-            var_dump($childMname);
-            echo("<br>");
-            var_dump($childLname);
-            echo("<br>");
-            var_dump($fatherName);
-            echo("<br>");
-            var_dump($motherName);
-            echo("<br>");
-            var_dump($birthPlace);
-            echo("<br>");
-            var_dump($bday);
-            echo("<br>");
-            var_dump($inDate);
-            echo("<br>");
-            var_dump($outDate);
-            echo("<br>");
-            var_dump($baptismDate);
-            echo("<br>");
+            // var_dump($userID);
+            // echo("<br>");
+            // var_dump($serviceID);
+            // echo("<br>");
+            // var_dump($childFname);
+            // echo("<br>");
+            // var_dump($childMname);
+            // echo("<br>");
+            // var_dump($childLname);
+            // echo("<br>");
+            // var_dump($fatherName);
+            // echo("<br>");
+            // var_dump($motherName);
+            // echo("<br>");
+            // var_dump($birthPlace);
+            // echo("<br>");
+            // var_dump($bday);
+            // echo("<br>");
+            // var_dump($inDate);
+            // echo("<br>");
+            // var_dump($outDate);
+            // echo("<br>");
+            // var_dump($baptismDate);
+            // echo("<br>");
 
             //insert statements
             try{
@@ -216,9 +266,9 @@
                 $stmt1->execute();
                 $stmt1->close();
                 $reserveID = $connection->insert_id;
-                $stmt2 = $connection->prepare("INSERT INTO confirmation(reservationID,serviceID,confirmFname,confirmMname,confirmLname,momName,dadName,birthplace,birthdate,baptismdate)
-                values(?,?,?,?,?,?,?,?,?,?);");
-                $stmt2->bind_param("iissssssss",$reserveID,$serviceID,$childFname,$childMname,$childLname,$fatherName,$motherName,$birthPlace,$bday,$baptismDate);
+                $stmt2 = $connection->prepare("INSERT INTO Confirmation(reservationID,serviceID,confirmFname,confirmMname,confirmLname,momName,dadName,birthplace,birthdate,baptismdate,baptismCert,sponsorOne,sponsorTwo)
+                values(?,?,?,?,?,?,?,?,?,?,?,?,?);");
+                $stmt2->bind_param("iissssssssiii",$reserveID,$serviceID,$childFname,$childMname,$childLname,$fatherName,$motherName,$birthPlace,$bday,$baptismDate,$baptismCert,$sponsorOne,$sponsorTwo);
                 $stmt2->execute();
                 $stmt2->close();
                 $connection->autocommit(true);//turns off transactions and commits queued queries
