@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <script src="../custom-js/staff-functions.js"></script>
     <?php
     require("../shared-html/staffnav.html");
     require("../custom-php/connector.php");
@@ -46,7 +47,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT r.reservationID, r.serviceID, r.reserveInDate,r.reserveOutDate,r.reserveStatus, u.fName,u.mName,u.lName,s.serviceName FROM reservations r, users u, church_services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
+                    $sql = "SELECT r.reservationID, r.serviceID, r.reserveStatus,r.reserveInDate,r.reserveOutDate, u.fName,u.mName,u.lName,s.serviceName FROM reservations r, users u, church_services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
                     $result = mysqli_query($connection, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo ("<tr>");
@@ -106,7 +107,27 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form action="../controllers/staff-reservation-controller.php">
+                        <div class="form-group">
+                            <input type="hidden" name="passedID" id="passedID">
+                        </div>
+                        <?php
+                            $sql = "SELECT reserveInDate,reserveOutDate from Reservations where reservationID = 22";
+                            $result = mysqli_query($connection,$sql);
+                            $row = mysqli_fetch_assoc($result);
+                            echo "<div class='form-group'>";
+                            echo "<label for='inDate'>Reservation In Date</label>";
+                            echo "<input type='date' class='form-control' id='inDate' name='inDate' value=$row[reserveInDate]>";
+                            echo "</div>";
+                            echo "<div class='form-group'>"; 
+                            echo "<label for='outDate'>Reservation Out Date</label>";
+                            echo "<input type='date' class='form-control' id='outDate' name='outDate' value=$row[reserveOutDate]>";
+                            echo "</div>";
+                        ?>
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-primary" name="editTime">Submit</button>
+                        </div>
+                    </form>
                     <!-- put more shit in here -->
                 </div>
                 <!-- <div class="modal-footer">
@@ -209,8 +230,8 @@
                             <input type="datetime-local" class="form-control" id="out-date-selector" name="outDate">
                         </div>
                         <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" value=1 name="cenomar">
-                                <label class="custom-control-label" for="customSwitch1">Cenomar</label>
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" value=1 name="cenomar">
+                            <label class="custom-control-label" for="customSwitch1">Cenomar</label>
                         </div>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="customSwitch2" value=1 name="seminarCert">
@@ -224,7 +245,7 @@
                             <input type="checkbox" class="custom-control-input" id="customSwitch4" value=1 name="civilRegistration">
                             <label class="custom-control-label" for="customSwitch4">Civil Registration</label>
                         </div>
-                        
+
                         <div class="form-group">
                             <h2>Downpayment: 250000<h2>
                         </div>
