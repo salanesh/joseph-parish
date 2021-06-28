@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,6 @@
 </head>   
 <body>
 <?php
-session_start();
 $failemail = 0;
 $failpass = 0;
 require("../custom-php/connector.php");
@@ -40,7 +42,6 @@ if ($stmt = $connection->prepare('SELECT userID, userPass, roleID FROM Users WHE
       if ($_POST['userPass'] === $userPass) {
          // Verification success! User has logged-in!
          // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
-         session_regenerate_id();
          $_SESSION['loggedin'] = TRUE;
          $_SESSION['name'] = $_POST['email'];
          $_SESSION['userID'] = $userID;

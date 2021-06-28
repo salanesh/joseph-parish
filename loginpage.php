@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,8 @@
     <title>Login or Register</title>
     <?php
     include('shared-html/header-links.html');
+    session_unset();
+    session_destroy();
     ?>
 </head>
 <body>

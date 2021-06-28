@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,9 @@
 <body>
     <?php
     require("../shared-html/staffnav.html");
+    if(!$_SESSION['userID']){
+        header('Location: ../loginpage.php');
+    }
     ?>
     <div class="staff-content my-2 mx-auto" style="width: 72rem">
         <h2>Announcements</h2>
