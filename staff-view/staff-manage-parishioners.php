@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +13,12 @@
     ?>
 </head>
 <body>
+<?php
+    require("../shared-html/staffnav.html");
+    if(!$_SESSION['userID']){
+        header('Location: ../loginpage.php');
+    }
+    ?>
 <script src="../custom-js/staff-functions.js"></script>
      <script>
             function validate(evt){

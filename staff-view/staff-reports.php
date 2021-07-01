@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,12 @@
 	<script src="../node_modules/chart.js/dist/Chart.bundle.min.js"></script>
 </head>
 <body>
+<?php
+    require("../shared-html/staffnav.html");
+    if(!$_SESSION['userID']){
+        header('Location: ../loginpage.php');
+    }
+    ?>
     <?php
     require("../shared-html/staffnav.html");
     ?>

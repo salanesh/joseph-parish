@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +14,12 @@
 </head>
 
 <body>
+<?php
+    require("../shared-html/staffnav.html");
+    if(!$_SESSION['userID']){
+        header('Location: ../loginpage.php');
+    }
+    ?>
     <script src="../custom-js/staff-functions.js"></script>
     <?php
     require("../shared-html/staffnav.html");
