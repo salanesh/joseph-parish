@@ -18,9 +18,11 @@ session_start();
         header('Location: ../loginpage.php');
     }
     ?>
-    <div class="staff-content my-2 mx-auto" style="width: 72rem">
-        <h2>Announcements</h2>
-        <p>Labore labore est enim ex cupidatat. In anim exercitation laboris ad aliquip elit minim minim ad in velit dolore dolore. Dolore occaecat in est sunt nisi amet labore incididunt adipisicing. Sit laboris ullamco culpa amet laborum voluptate aliqua laboris occaecat sunt do quis reprehenderit nisi. Consectetur magna ut occaecat deserunt excepteur sit dolor.</p>
-    </div>
+            <div class="card mx-auto special-card my-3 special-card" style="width: 48rem">
+            <div class="card-body">
+                <h2 class="text-center">ANNOUNCEMENTS</h2>
+                <p align="justify" style="text-indent: 20px">In celebration of the 500 years of Christianity in the Philippines, our parish celebrates a year-long Jubilee. 
+                We have a program every month. Just this month of June we had Ayos/Linis Kapilya wherein all chapels in the parish do cleaning and repairing their chapels.</p>
+            </div>
 </body>
 </html>
