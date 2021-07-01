@@ -28,7 +28,7 @@ session_start();
     <div class="container-fluid">
         <form class="form-inline my-2 mx-2">
         <input class="form-control mr-sm-2" type="search" placeholder="Search Donation Category" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-success my-1 my-sm-0" type="submit">Search</button>
         </form>
     </div>
     
@@ -85,8 +85,6 @@ session_start();
     </div>
     </div>
     
-
-    <!-- Add Employee Modal -->
 
     <div class="modal fade" id="addDonationCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addDonationCategoryLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -151,11 +149,5 @@ session_start();
                 </div>
             </div>
         </div>
-        
-
-
-
-    
-    </div>
 </body>
 </html>
