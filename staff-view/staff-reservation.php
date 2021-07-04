@@ -82,71 +82,7 @@ session_start();
                 </tbody>
             </table>
         </div>
-
     </div>
-    <!-- reservation requirements modal -->
-    <div class="modal fade" id="requirementsModal" tabindex="-1" aria-labelledby="requirementsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="requirementsModalLabel">Requirements For Reservation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                    <!-- put the shit in here -->
-                </div>
-                <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
-            </div>
-        </div>
-    </div>
-    <!-- time details modal -->
-    <div class="modal fade" id="timeDetailModal" tabindex="-1" aria-labelledby="timeDetailModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="timeDetailModalLabel">Time Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="../controllers/staff-reservation-controller.php">
-                        <div class="form-group">
-                            <input type="hidden" name="passedID" id="passedID">
-                        </div>
-                        <?php
-                            $sql = "SELECT reserveInDate,reserveOutDate from Reservations where reservationID = 22";
-                            $result = mysqli_query($connection,$sql);
-                            $row = mysqli_fetch_assoc($result);
-                            echo "<div class='form-group'>";
-                            echo "<label for='inDate'>Reservation In Date</label>";
-                            echo "<input type='date' class='form-control' id='inDate' name='inDate' value=$row[reserveInDate]>";
-                            echo "</div>";
-                            echo "<div class='form-group'>"; 
-                            echo "<label for='outDate'>Reservation Out Date</label>";
-                            echo "<input type='date' class='form-control' id='outDate' name='outDate' value=$row[reserveOutDate]>";
-                            echo "</div>";
-                        ?>
-                        <div class="container text-center">
-                            <button type="submit" class="btn btn-primary" name="editTime">Submit</button>
-                        </div>
-                    </form>
-                    <!-- put more shit in here -->
-                </div>
-                <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
-            </div>
-        </div>
-    </div>
-
     <!-- marriage modal -->
     <div class="modal fade" id="marriageReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -411,38 +347,65 @@ session_start();
             </div>
         </div>
     </div>
-
-    <!-- View Reservation Requirements List Modal -->
-    <div class="modal fade" id="viewRequirementsModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+<!-- reservation requirements modal -->
+<div class="modal fade" id="requirementsModal" tabindex="-1" aria-labelledby="requirementsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Reservation Requirements: Marriage</h5>
+                    <h5 class="modal-title" id="requirementsModalLabel">Requirements For Reservation</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-bordered table-hover">
-                        <thead class="bg-grey">
-                            <tr>
-                                <th scope="col">Requirement Name</th>
-                                <th scope="col">Submited On</th>
-                                <th scope="col">Actions/Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="col">Cenomar</th>
-                                <th scope="col">10/10/20</th>
-                                <th scope="col">OK</th>
-                            </tr>
-                        </tbody>
-                    </table>
+                    ...
+                    <!-- put the shit in here -->
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- time details modal -->
+    <div class="modal fade" id="timeDetailModal" tabindex="-1" aria-labelledby="timeDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="timeDetailModalLabel">Time Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <form action="../controllers/staff-reservation-controller.php">
+                        <div class="form-group">
+                            <input type="hidden" name="passedID" id="passedID">
+                        </div>
+                        <?php
+                            $sql = "SELECT reserveInDate,reserveOutDate from Reservations where reservationID = 22";
+                            $result = mysqli_query($connection,$sql);
+                            $row = mysqli_fetch_assoc($result);
+                            echo "<div class='form-group'>";
+                            echo "<label for='inDate'>Reservation In Date</label>";
+                            echo "<input type='date' class='form-control' id='inDate' name='inDate' value=$row[reserveInDate]>";
+                            echo "</div>";
+                            echo "<div class='form-group'>"; 
+                            echo "<label for='outDate'>Reservation Out Date</label>";
+                            echo "<input type='date' class='form-control' id='outDate' name='outDate' value=$row[reserveOutDate]>";
+                            echo "</div>";
+                        ?>
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-primary" name="editTime">Submit</button>
+                        </div>
+                    </form>
+                    <!-- put more shit in here -->
+                </div>
+                <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
             </div>
         </div>
     </div>
