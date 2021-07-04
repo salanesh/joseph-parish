@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +16,12 @@
 </head>
 <body>
 <?php
-    require("../shared-html/staffnav.html");
-    require("../custom-php/connector.php");
+    if(!$_SESSION['userID']){
+        header('Location: ../loginpage.php');
+    }else{
+        require("../shared-html/staffnav.html");
+        require("../custom-php/connector.php");
+    }
 ?>
 <div class = "container-fluid staff-content">
 <div class="container-fluid">

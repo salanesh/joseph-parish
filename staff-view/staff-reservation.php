@@ -16,15 +16,13 @@ session_start();
 
 <body>
 <?php
-    require("../shared-html/staffnav.html");
     if(!$_SESSION['userID']){
         header('Location: ../loginpage.php');
+    }else{
+        require("../shared-html/staffnav.html");
+        require("../custom-php/connector.php");
     }
 ?>
-    <?php
-    require("../shared-html/staffnav.html");
-    require("../custom-php/connector.php");
-    ?>
     <div class="container-fluid staff-content">
         <div class="container-fluid">
             <form class="form-inline my-2 mx-2">
