@@ -1,90 +1,30 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Reservations</title>
+    <title>Testing Modals and shit</title>
     <?php
     include("../shared-html/header-links-loggedin.html");
+    require("../custom-php/connector.php");
     ?>
     <script src="../custom-js/staff-functions.js"></script>
 </head>
-
 <body>
 <?php
     require("../shared-html/staffnav.html");
-    if(!$_SESSION['userID']){
-        header('Location: ../loginpage.php');
-    }
-?>
-    <?php
-    require("../shared-html/staffnav.html");
     require("../custom-php/connector.php");
-    ?>
-    <div class="container-fluid staff-content">
-        <div class="container-fluid">
-            <form class="form-inline my-2 mx-2">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Reservations" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-
-
-        <div class="container-fluid my-3 mx-auto">
+?>
+<div class="container-fluid my-3 mx-auto">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#massReservationModal">Reserve Mass</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#marriageReservationModal">Marriage</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#baptismReservationModal">Baptism</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationReservationModal">Confirmation</button>
-        </div>
+</div>
 
-
-        <div class="container-fluid mx-auto" style="width: 70rem">
-            <table class="table table-bordered table-hover">
-                <thead class="bg-grey">
-                    <tr>
-                        <th scope="col">Reservation ID</th>
-                        <th scope="col">Requirement Details</th>
-                        <th scope="col">Time Details</th>
-                        <!-- <th scope="col">Reservation Type</th> -->
-                        <th scope="col">Church Service</th>
-                        <th scope="col">Reserved by</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT r.reservationID, r.serviceID, r.reserveStatus,r.reserveInDate,r.reserveOutDate, u.fName,u.mName,u.lName,s.serviceName FROM reservations r, users u, church_services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
-                    $result = mysqli_query($connection, $sql);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo ("<tr>");
-                        echo ("<th>");
-                        echo $row['reservationID'];
-                        echo ("</th>");
-                        echo ("<td>");
-                        echo ("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=" . $row['serviceID'] . " data-target='#requirementsModal'>Requirements</button>");
-                        echo ("</td>");
-                        echo ("<td>");
-                        echo ("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=" . $row['reservationID'] . " data-target='#timeDetailModal'>Time</button>");
-                        echo ("</td>");
-                        echo ("<td>");
-                        echo $row['serviceName'];
-                        echo ("</td>");
-                        echo ("<td>");
-                        echo $row['fName'] . "&nbsp" . $row['mName'] . "&nbsp" . $row['lName'];
-                        echo ("</td>");
-                        echo ("</tr>");
-                    }
-                    ?>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!-- marriage modal -->
-    <div class="modal fade" id="marriageReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
+<!-- marriage modal -->
+<div class="modal fade" id="marriageReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -347,66 +287,6 @@ session_start();
             </div>
         </div>
     </div>
-<!-- reservation requirements modal -->
-<div class="modal fade" id="requirementsModal" tabindex="-1" aria-labelledby="requirementsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="requirementsModalLabel">Requirements For Reservation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                    <!-- put more shit in here -->
-                </div>
-                <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
-            </div>
-        </div>
-    </div>
-    <!-- time details modal -->
-    <div class="modal fade" id="timeDetailModal" tabindex="-1" aria-labelledby="timeDetailModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="timeDetailModalLabel">Time Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="../controllers/staff-reservation-controller.php">
-                        <div class="form-group">
-                            <input type="hidden" name="passedID" id="passedID">
-                        </div>
-                        <?php
-                            $sql = "SELECT reserveInDate,reserveOutDate from Reservations where reservationID = 22";
-                            $result = mysqli_query($connection,$sql);
-                            $row = mysqli_fetch_assoc($result);
-                            echo "<div class='form-group'>";
-                            echo "<label for='inDate'>Reservation In Date</label>";
-                            echo "<input type='date' class='form-control' id='inDate' name='inDate' value=$row[reserveInDate]>";
-                            echo "</div>";
-                            echo "<div class='form-group'>"; 
-                            echo "<label for='outDate'>Reservation Out Date</label>";
-                            echo "<input type='date' class='form-control' id='outDate' name='outDate' value=$row[reserveOutDate]>";
-                            echo "</div>";
-                        ?>
-                        <div class="container text-center">
-                            <button type="submit" class="btn btn-primary" name="editTime">Submit</button>
-                        </div>
-                    </form>
-                    <!-- put more shit in here -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 </body>
 
 </html>
