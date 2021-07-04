@@ -53,29 +53,7 @@ session_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $sql = "SELECT r.reservationID, r.serviceID, r.reserveStatus,r.reserveInDate,r.reserveOutDate, u.fName,u.mName,u.lName,s.serviceName FROM reservations r, users u, church_services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
-                    $result = mysqli_query($connection, $sql);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo ("<tr>");
-                        echo ("<th>");
-                        echo $row['reservationID'];
-                        echo ("</th>");
-                        echo ("<td>");
-                        echo ("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=" . $row['serviceID'] . " data-target='#requirementsModal'>Requirements</button>");
-                        echo ("</td>");
-                        echo ("<td>");
-                        echo ("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=" . $row['reservationID'] . " data-target='#timeDetailModal'>Time</button>");
-                        echo ("</td>");
-                        echo ("<td>");
-                        echo $row['serviceName'];
-                        echo ("</td>");
-                        echo ("<td>");
-                        echo $row['fName'] . "&nbsp" . $row['mName'] . "&nbsp" . $row['lName'];
-                        echo ("</td>");
-                        echo ("</tr>");
-                    }
-                    ?>
+                   
 
                 </tbody>
             </table>

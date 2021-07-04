@@ -71,7 +71,7 @@ session_start();
                         echo ("</td>");
                         echo ("</tr>");
                     }
-                    ?>
+                ?>
             </tbody>
         </table>
     </div>
