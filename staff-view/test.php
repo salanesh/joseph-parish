@@ -24,34 +24,57 @@ session_start();
     }
 ?>
 <div class = "container-fluid staff-content">
-<div class="container-fluid">
+    <div class="container-fluid">
             <form class="form-inline my-2 mx-2">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search Reservations" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-</div>
-<div class="container-fluid my-3 mx-auto">
+    </div>
+    <div class="container-fluid my-3 mx-auto">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#massReservationModal">Reserve Mass</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#marriageReservationModal">Marriage</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#baptismReservationModal">Baptism</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationReservationModal">Confirmation</button>
-</div>
-<div class="container-fluid mx-auto" style="width: 70rem">
-<table class="table table-bordered table-hover">
-                <thead class="bg-grey">
-                    <tr>
-                        <th scope="col">Reservation ID</th>
-                        <th scope="col">Requirement Details</th>
-                        <th scope="col">Time Details</th>
-                        <!-- <th scope="col">Reservation Type</th> -->
-                        <th scope="col">Church Service</th>
-                        <th scope="col">Reserved by</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-</table>
-</div>
+    </div>
+    <div class="container-fluid mx-auto" style="width: 70rem">
+        <table class="table table-bordered table-hover">
+            <thead class="bg-grey">
+                        <tr>
+                            <th scope="col">Reservation ID</th>
+                            <th scope="col">Requirement Details</th>
+                            <th scope="col">Time Details</th>
+                            <!-- <th scope="col">Reservation Type</th> -->
+                            <th scope="col">Church Service</th>
+                            <th scope="col">Reserved by</th>
+                        </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $sql = "SELECT r.reservationID, r.serviceID, r.reserveStatus,r.reserveInDate,r.reserveOutDate, u.fName,u.mName,u.lName,s.serviceName FROM reservations r, users u, church_services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
+                    $result = mysqli_query($connection, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo ("<tr>");
+                        echo ("<th>");
+                        echo $row['reservationID'];
+                        echo ("</th>");
+                        echo ("<td>");
+                        echo ("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=" . $row['serviceID'] . " data-target='#requirementsModal'>Requirements</button>");
+                        echo ("</td>");
+                        echo ("<td>");
+                        echo ("<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=" . $row['reservationID'] . " data-target='#timeDetailModal'>Time</button>");
+                        echo ("</td>");
+                        echo ("<td>");
+                        echo $row['serviceName'];
+                        echo ("</td>");
+                        echo ("<td>");
+                        echo $row['fName'] . "&nbsp" . $row['mName'] . "&nbsp" . $row['lName'];
+                        echo ("</td>");
+                        echo ("</tr>");
+                    }
+                    ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 <!-- marriage modal -->
 <div class="modal fade" id="marriageReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
