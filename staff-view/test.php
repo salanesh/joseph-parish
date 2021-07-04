@@ -16,13 +16,14 @@
     require("../shared-html/staffnav.html");
     require("../custom-php/connector.php");
 ?>
+<div class = "container-fluid staff-content">
 <div class="container-fluid my-3 mx-auto">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#massReservationModal">Reserve Mass</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#marriageReservationModal">Marriage</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#baptismReservationModal">Baptism</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationReservationModal">Confirmation</button>
 </div>
-
+</div>
 <!-- marriage modal -->
 <div class="modal fade" id="marriageReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
