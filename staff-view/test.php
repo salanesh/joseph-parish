@@ -50,7 +50,7 @@ session_start();
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT r.reservationID, r.serviceID, r.reserveStatus,r.reserveInDate,r.reserveOutDate, u.fName,u.mName,u.lName,s.serviceName FROM reservations r, users u, church_services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
+                    $sql = "SELECT r.reservationID, r.serviceID, r.reserveStatus,r.reserveInDate,r.reserveOutDate, u.fName,u.mName,u.lName,s.serviceName FROM Reservations r, Users u, Church_Services s WHERE u.userID = r.userID AND r.serviceID = s.serviceID;";
                     $result = mysqli_query($connection, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo ("<tr>");
