@@ -36,7 +36,22 @@ session_start();
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#baptismReservationModal">Baptism</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationReservationModal">Confirmation</button>
 </div>
-    
+<div class="container-fluid mx-auto" style="width: 70rem">
+<table class="table table-bordered table-hover">
+                <thead class="bg-grey">
+                    <tr>
+                        <th scope="col">Reservation ID</th>
+                        <th scope="col">Requirement Details</th>
+                        <th scope="col">Time Details</th>
+                        <!-- <th scope="col">Reservation Type</th> -->
+                        <th scope="col">Church Service</th>
+                        <th scope="col">Reserved by</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+</table>
+</div>
 </div>
 <!-- marriage modal -->
 <div class="modal fade" id="marriageReservationModal" tabindex="-1" role="dialog" aria-labelledby="addReservationLabel" aria-hidden="true">
