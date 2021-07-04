@@ -11,6 +11,7 @@ session_start();
     <?php
     include("../shared-html/header-links-loggedin.html");
     ?>
+    <script src="../custom-js/staff-functions.js"></script>
 </head>
 
 <body>
@@ -19,8 +20,7 @@ session_start();
     if(!$_SESSION['userID']){
         header('Location: ../loginpage.php');
     }
-    ?>
-    <script src="../custom-js/staff-functions.js"></script>
+?>
     <?php
     require("../shared-html/staffnav.html");
     require("../custom-php/connector.php");
@@ -359,7 +359,7 @@ session_start();
                 </div>
                 <div class="modal-body">
                     ...
-                    <!-- put the shit in here -->
+                    <!-- put more shit in here -->
                 </div>
                 <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -402,10 +402,6 @@ session_start();
                     </form>
                     <!-- put more shit in here -->
                 </div>
-                <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
             </div>
         </div>
     </div>

@@ -11,15 +11,14 @@ session_start();
     include("../shared-html/header-links-loggedin.html");
     require("../custom-php/connector.php");
     ?>
+    <script src="../custom-js/staff-functions.js"></script>
 </head>
 <body>
 <?php
-    require("../shared-html/staffnav.html");
     if(!$_SESSION['userID']){
         header('Location: ../loginpage.php');
     }
     ?>
-<script src="../custom-js/staff-functions.js"></script>
     <?php
     require("../shared-html/staffnav.html");
     ?>
