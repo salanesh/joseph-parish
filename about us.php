@@ -22,9 +22,9 @@
                 <h2 class="text-center">Theme</h2>
                 <p align="justify" style="text-indent: 20px">Sa akong pagpanaw ning kalibutan. Ang kauban ko kalisud ug pagsulay ang imong kamot nga kanako nag kupot maoy pagsalig sa pagbulig gikan sa Langitnong Amahan. San Jose, kanunay kong kaabag sa mga kabalaka kahingawa sa lawas ug kalag. Pagkab-ot sa mga gi laraw. Tanang butang nga maayo, tanan i-sandig ko kanimo. San Jose among amahan sa pagtuo ang mahilum nga mga tunob mo. Pagasundon ko, pagasundon ko.</p>
                 <h2 class="text-center">Mission</h2>
-                <p>Laborum occaecat sunt eu ipsum. Nostrud consectetur do occaecat aliqua do ex commodo laborum sunt quis. Eiusmod non eiusmod amet ea. Cupidatat minim irure mollit excepteur deserunt nulla pariatur voluptate nostrud. Eiusmod incididunt veniam laboris reprehenderit aliqua consequat. Reprehenderit officia elit et ea ex consectetur.</p>
+                <p>Isangyaw ang Maayong Balita ngadto sa mga kabus ug himoa silang mga tinun-an ni Kristo nga nagpakabana ug nanginlabot sa mga kabus ug sa kinaiyahan.</p>
                 <h2 class="text-center">Vision</h2>
-                <p>Laborum occaecat sunt eu ipsum. Nostrud consectetur do occaecat aliqua do ex commodo laborum sunt quis. Eiusmod non eiusmod amet ea. Cupidatat minim irure mollit excepteur deserunt nulla pariatur voluptate nostrud. Eiusmod incididunt veniam laboris reprehenderit aliqua consequat. Reprehenderit officia elit et ea ex consectetur.</p>
+                <p>Parokyang nagkahiusa isip lawas ni Kristo diha sa Espriritu Santo ug sa mga sakramento, pag-ampo ug debosyon, gibanwagan sa pulong sa Dios, ug malipayong nagpaambit ug saksi sa Maayong Balita pinaagi sa mga buhat sa kalooy ngadto sa mga kabus ug mga lakang sa pagpakabana sa kinaiyahan ubos sa pangama ni Sr. San Jose ug ni Sta. Teresita sa Batang Jesus. </p>
                 
             </div>
         </div>  
