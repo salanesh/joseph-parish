@@ -30,6 +30,7 @@
         $eventID = $_POST["eventID"];
         $donationamount = $_POST["donAmount"];
         $donationdate = $_POST["donDate"];
+        $donationtype = $_POST["donType"];
        //var_dump($userID);
        //var_dump($catID);
        //var_dump($eventID);
@@ -38,8 +39,8 @@
 
 
         //statements now
-         $statement = $connection->prepare("INSERT INTO Donations(userID,catID,eventID,donationAmount,donationDate) values(?,?,?,?,?)");
-         $statement->bind_param("iiiii",$userID,$catID,$eventID,$donationamount,$donationdate);
+         $statement = $connection->prepare("INSERT INTO Donations(userID,catID,eventID,donationAmount,donationDate,donationType) values(?,?,?,?,?,?)");
+         $statement->bind_param("iiiiii",$userID,$catID,$eventID,$donationamount,$donationdate,$donationtype);
          $statement->execute();
          echo('the shit has been added');
          $statement->close();
@@ -52,7 +53,7 @@
 
 
          $param1="";
-         $sqlSelector = "UPDATE users set";
+         $sqlSelector = "UPDATE Users set";
          if(!empty($_POST["rolekey"])){
              $sqlSelector .=" roleID=?,";
              $param1 .="i";

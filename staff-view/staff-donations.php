@@ -53,6 +53,7 @@ session_start();
                     <th scope="col">Event Donation</th>
                     <th scope="col">Donation Amount</th>
                     <th scope="col">Donation Date</th>
+                    <th scope="col">Donation Type</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -77,6 +78,9 @@ session_start();
                        echo "</td>";
                        echo "<td>";
                        echo $row['donationDate'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo $row['donationType'];
                        echo "</td>";
                        echo "<td>";
                        echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editDonationModal'>Edit</button>";
@@ -151,6 +155,13 @@ session_start();
                         <div class="form-group">
                             <label for="donation-date-input">Donation Date</label>
                             <input type="date" id="donation-date-input" name="donDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="donationtype-selector">Donation Type: </label>
+                            <select class="form-control" id="donationtype-selector" name="donType">
+                            <option value= 1>Cash</option>
+                            <option value= 2>In-Kind</option>
+                        </select>
                         </div>
                         <div class="container text-center">
                             <button type="submit" class="btn btn-primary" name="addDonation">Submit</button>
