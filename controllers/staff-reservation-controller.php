@@ -118,7 +118,7 @@
                 $stmt1->execute();
                 $stmt1->close();
                 $reserveID = $connection->insert_id;
-                $stmt2 = $connection->prepare("INSERT INTO marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomBday,groomAddress,brideName,brideDadName,brideMomName,brideBday,brideAddress,cenomar,seminarCert,confession,civilRegistration)
+                $stmt2 = $connection->prepare("INSERT INTO Marriage(reservationID,serviceID,groomName,groomDadName,groomMomName,groomBday,groomAddress,brideName,brideDadName,brideMomName,brideBday,brideAddress,cenomar,seminarCert,confession,civilRegistration)
                 values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
                 $stmt2->bind_param("iissssssssssiiii",$reserveID,$serviceID,$gFullName,$gFatherFullName,$gMotherFullName,$gbday,$groomAddress,$bFullName,$bFatherFullName,$bMotherFullName,$bbday,$brideAddress,$cenomar,$seminarCert,$confession,$civilRegistration);
                 $stmt2->execute();
