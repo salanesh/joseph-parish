@@ -54,13 +54,15 @@ session_start();
                     <th scope="col">Donation Amount</th>
                     <th scope="col">Donation Date</th>
                     <th scope="col">Donation Type</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                   
                 <?php
-                    $sql="SELECT * from Donations";
+                 require("../custom-php/connector.php");
+                    $sql="SELECT * from Donations where donationStatus !=0";
                     $shit=mysqli_query($connection,$sql); 
                     while($row = mysqli_fetch_assoc($shit)) {
                        echo "<tr>";
@@ -83,7 +85,10 @@ session_start();
                        echo $row['donationType'];
                        echo "</td>";
                        echo "<td>";
-                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#editDonationModal'>Edit</button>";
+                       echo $row['donationStatus'];
+                       echo "</td>";
+                       echo "<td>";
+                       echo "<button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['userID']." data-target='#EditDonationModal'>Edit</button>";
                        echo "&nbsp";
                        echo "<a href='../controllers/donation-controller.php?deactID=".$row['userID']."'><button class='btn btn-danger' onclick = 'return confirm(Are you sure?)'>Deactivate</button></a>";
                        echo "</td>";
@@ -174,7 +179,7 @@ session_start();
 
 
     <!-- edit employees modal -->
-    <div class="modal fade" id="EditDonationModal" tabindex="-1" role="dialog" aria-labelledby="EditDonationsLabel" aria-hidden="true">
+    <div class="modal fade" id="EditDonationModal" tabindex="-1" role="dialog" aria-labelledby="EditDonationLabel"aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -231,7 +236,13 @@ session_start();
                         <div class="form-group">
                             <label for="donation-date-input">Donation Date</label>
                             <input type="date" id="donation-date-input" name="donationdate">
-
+                        <div class="form-group">
+                            <label for="donationtype-selector">Donation Type: </label>
+                            <select class="form-control" id="donationtype-selector" name="donType">
+                            <option value= 1>Cash</option>
+                            <option value= 2>In-Kind</option>
+                            </select>
+                        </div>   
                         <div class="container text-center">
                             <button type="submit" class="btn btn-primary" name="editDonation">Submit</button>
                          </div>
