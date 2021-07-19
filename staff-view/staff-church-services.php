@@ -57,6 +57,7 @@ session_start();
     </script>
 </head>
 <body>
+    <script src="../custom-js/staff-functions.js"></script>
     <?php
     require("../shared-html/staffnav.html");
     if(!$_SESSION['userID']){
@@ -117,7 +118,7 @@ session_start();
                         echo "<td>$row[2]</td>";
                         echo "<td>$row[3]</td>";
                         echo "<td class='desc text-center'>";   
-                        echo "<a><button class='btn btn-secondary open-editservice' data-toggle='modal' data-id=".$row['serviceID']." data-target='#editServiceModal'> Edit </button></a> ";
+                        echo "<a><button class='btn btn-secondary open-editUser' data-toggle='modal' data-id=".$row['serviceID']." data-target='#editServiceModal'> Edit </button></a> ";
                         echo "<a href='../controllers/staff-service-controller.php?deleteID=".$row['serviceID']."'><button class='btn btn-danger'>Delete</button></a>";
                         echo "</td>";
                         echo "</tr>";
@@ -239,6 +240,7 @@ session_start();
                             <label for="service-reqs">Requirements:</label>
                             <textarea class="form-control" id="service-reqs" rows="2" name="servicereqss"></textarea>
                         </div>
+                        
                         <div class="container text-center">
                             <button type="submit" class="btn btn-primary" name=editID>Submit</button>
                          </div>

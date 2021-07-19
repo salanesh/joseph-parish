@@ -53,7 +53,7 @@
 
     function editdonation(){
         require("../custom-php/connector.php");
-
+        echo($_POST["donationID"]);
 
          $param1="";
          $sqlSelector = "UPDATE Donations set";
@@ -116,7 +116,7 @@
     }
     
         
-     header("Location: ../staff-view/staff-donations.php?success=".$succText);
+    //  header("Location: ../staff-view/staff-donations.php?success=".$succText);
     ?>
 </body>
 </html>

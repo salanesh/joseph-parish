@@ -59,31 +59,30 @@
     
     }
     function editService(){
+        // echo($_POST["passedID"]);        
+        // echo("<br>");        
+        // echo($_POST["servicenames"]);        
+        // echo("<br>");        
+        // echo($_POST["servicedescs"]);        
+        // echo("<br>");        
+        // echo($_POST["serviceprices"]);        
+        // echo("<br>");        
+        // echo($_POST["servicepics"]);        
+        // echo("<br>");        
+        // echo($_POST["servicereqss"]);                
+
         require("../custom-php/connector.php");
-
-
-        //use var_dump to check if the variables are holding the right data
-        //  echo("<br>");
-        //  var_dump($_POST["rolekey"]);
-        //  var_dump($_POST["fname"]);
-        //  echo("<br>");
-        //  var_dump($_POST["lname"]);
-        //  echo("<br>");
-        //  var_dump($_POST["mname"]);
-        //  echo("<br>");
-        //  var_dump($_POST["empbday"]);
-        //  echo("<br>");
-        //  var_dump($_POST["empaddress"]);
-        //  echo("<br>");
-        //  var_dump($_POST["empemail"]);
-        //  echo("<br>");
-        //  var_dump($_POST["emppassword"]);
          $param1="";
          $sqlSelector = "UPDATE church_services set";
-         if(!empty($_POST["servicenamess"])){
+        //  if(!empty($_POST["passedID"])){
+        //     $sqlSelector .=" serviceID=?,";
+        //     $param1 .="i";
+        //     $param2[] =$_POST["passedID"];
+        //  }
+         if(!empty($_POST["servicenames"])){
              $sqlSelector .=" serviceName=?,";
              $param1 .="s";
-             $param2[] = $_POST["servicenamess"];
+             $param2[] = $_POST["servicenames"];
          }
          if(!empty($_POST["servicedescs"])){
              $sqlSelector .=" serviceDesc=?,";
@@ -96,7 +95,7 @@
              $param2[] = $_POST["serviceprices"];
          }
          if(!empty($_POST["servicepics"])){
-             $sqlSelector .=" servicePic=?";
+             $sqlSelector .=" servicePic=?,";
              $param1 .="s";
              $param2[] = $_POST["servicepics"];
          }
@@ -111,6 +110,13 @@
          $sqlSelector.=" where serviceID=?";
 
           $statement = $connection->prepare($sqlSelector);
+        //   echo("<br>");
+        //   echo($param1);
+        //   echo("<br>");
+        //   print_r($param2);
+        //   echo("<br>");
+        //   echo($sqlSelector);
+        //   echo("<br>");
           $statement->bind_param($param1,...$param2);
           $statement->execute();
           $statement->close();
